@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_131952) do
+ActiveRecord::Schema.define(version: 2019_02_26_141557) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "booking_reference"
+    t.integer "userid"
+    t.string "institution"
+    t.integer "ticket_type"
+    t.boolean "access_req"
+    t.boolean "catering"
+    t.boolean "attended"
+    t.string "dietary_req"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -34,6 +50,17 @@ ActiveRecord::Schema.define(version: 2019_02_26_131952) do
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "userid"
+    t.string "username"
+    t.string "password"
+    t.integer "access"
+    t.string "email"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
