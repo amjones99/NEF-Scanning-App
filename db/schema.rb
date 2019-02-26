@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_141557) do
+ActiveRecord::Schema.define(version: 2019_02_26_145132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2019_02_26_141557) do
     t.boolean "catering"
     t.boolean "attended"
     t.string "dietary_req"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "conferences", force: :cascade do |t|
+    t.integer "conf_id"
+    t.integer "days"
+    t.string "name"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_02_26_141557) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "event_id"
+    t.string "name"
+    t.string "speaker"
+    t.string "location"
+    t.string "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
     t.text "data"
@@ -50,6 +69,17 @@ ActiveRecord::Schema.define(version: 2019_02_26_141557) do
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
+  create_table "timetables", force: :cascade do |t|
+    t.integer "session_id"
+    t.integer "conf_id"
+    t.integer "event_id"
+    t.integer "day_num"
+    t.date "start_time"
+    t.date "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

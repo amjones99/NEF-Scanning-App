@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :events
+  resources :conferences
+  resources :timetables
   resources :users
   resources :bookings
   match "/403", to: "errors#error_403", via: :all
