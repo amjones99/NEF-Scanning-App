@@ -13,6 +13,7 @@
 #  userid            :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  conf_id           :integer
 #
 
 class Booking < ApplicationRecord
