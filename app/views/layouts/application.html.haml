@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Project - #{content_for(:title)}
+    %title NEF Sanning App - #{content_for(:title)}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %meta{ :'http-equiv' => 'X-UA-Compatible', content: 'IE=edge' }
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "content-type"}
@@ -40,16 +40,26 @@
               %span.icon-bar
               %span.icon-bar
             = link_to :root, class: 'navbar-brand hidden-sm' do
-              Project
+              NEF Scanning App
 
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
               = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
-              = navbar_link_to '#', title: "Go to another page", identifier: :another_page do
-                = fa_icon 'question-circle'
-                Another Page
+              = navbar_link_to 'add', title: "Scan", identifier: :add do
+                = fa_icon 'camera'
+                Scan
+              = navbar_link_to '#', title: "Add a new participant", identifier: :another_page do
+                = fa_icon 'plus-square'
+                Add new
+              = navbar_link_to '#', title: "Create notifications", identifier: :another_page do
+                = fa_icon 'bell'
+                Create notifications
+              = navbar_link_to '#', title: "See participants", identifier: :another_page do
+                = fa_icon 'search'
+                See participants
+                
             -# - if user_signed_in?
             -#   %ul.nav.navbar-nav.navbar-right
             -#     %li.dropdown

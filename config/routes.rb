@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
+  get :add, to: 'pages#add'
 
   root to: "pages#home"
 
