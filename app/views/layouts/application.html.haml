@@ -47,16 +47,16 @@
               = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
-              = navbar_link_to 'add', title: "Scan", identifier: :add do
+              = navbar_link_to '#', title: "Scan", identifier: :add do
                 = fa_icon 'camera'
                 Scan
-              = navbar_link_to '#', title: "Add a new participant", identifier: :another_page do
+              = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
                 = fa_icon 'plus-square'
                 Add new
               = navbar_link_to '#', title: "Create notifications", identifier: :another_page do
                 = fa_icon 'bell'
                 Create notifications
-              = navbar_link_to '#', title: "See participants", identifier: :another_page do
+              = navbar_link_to :users, title: "See participants", identifier: :another_page do
                 = fa_icon 'search'
                 See participants
                 
