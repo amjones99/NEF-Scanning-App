@@ -4,7 +4,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  not_des    :string
-#  time       :date
+#  time       :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  not_id     :string
