@@ -14,4 +14,6 @@
 class Conference < ApplicationRecord
   has_one :timetable
   has_many :events, through: :timetable
+
+  validates :days, :name, :location, presence: true
 end

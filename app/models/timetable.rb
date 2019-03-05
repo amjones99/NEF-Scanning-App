@@ -16,4 +16,6 @@
 class Timetable < ApplicationRecord
   has_many :events
   belongs_to :conferences
+
+  validates :conf_id, :event_id, :day_num, :start_time, :end_time, presence: true
 end

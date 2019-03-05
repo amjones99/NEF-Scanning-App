@@ -11,4 +11,5 @@
 #
 
 class Notification < ApplicationRecord
+  validates :not_id, :not_des, :time, presence: true
 end
