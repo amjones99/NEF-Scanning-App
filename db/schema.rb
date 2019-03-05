@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_115736) do
+ActiveRecord::Schema.define(version: 2019_03_05_133210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 2019_03_05_115736) do
     t.bigint "event_id", null: false
     t.index ["event_id", "timetable_id"], name: "index_events_timetables_on_event_id_and_timetable_id"
     t.index ["timetable_id", "event_id"], name: "index_events_timetables_on_timetable_id_and_event_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "not_id"
+    t.string "not_des"
+    t.date "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
