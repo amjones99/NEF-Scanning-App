@@ -12,4 +12,6 @@
 #
 
 class Conference < ApplicationRecord
+  has_one :timetable
+  has_many :events, through: :timetable
 end
