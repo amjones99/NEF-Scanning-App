@@ -7,7 +7,6 @@
 #  email      :string
 #  name       :string
 #  password   :string
-#  userid     :integer
 #  username   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

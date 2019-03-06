@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_133210) do
+ActiveRecord::Schema.define(version: 2019_03_06_202913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.integer "booking_reference"
-    t.integer "userid"
     t.string "institution"
     t.integer "ticket_type"
     t.boolean "access_req"
@@ -37,7 +36,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "conferences", force: :cascade do |t|
-    t.integer "conf_id"
     t.integer "days"
     t.string "name"
     t.string "location"
@@ -68,7 +66,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "event_id"
     t.string "name"
     t.string "speaker"
     t.string "location"
@@ -102,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "session_id"
     t.integer "conf_id"
     t.integer "event_id"
     t.integer "day_num"
@@ -113,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "userid"
     t.string "username"
     t.string "password"
     t.integer "access"

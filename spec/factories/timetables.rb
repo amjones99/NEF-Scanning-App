@@ -10,7 +10,6 @@
 #  updated_at :datetime         not null
 #  conf_id    :integer
 #  event_id   :integer
-#  session_id :integer
 #
 
 FactoryBot.define do
