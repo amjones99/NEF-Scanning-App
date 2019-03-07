@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Notification Name:
+  = @notification.not_id
+%p
+  %b Notification Description:
+  = @notification.not_des
+%p
+  %b Time of Notification:
+  = @notification.time
+
+= link_to 'Edit', edit_notification_path(@notification)
+\|
+= link_to 'Back', notifications_path
