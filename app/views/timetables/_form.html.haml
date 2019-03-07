@@ -5,11 +5,11 @@
 
   .form-inputs
     = f.input :session_id
-    = f.input :conf_id
-    = f.input :event_id
-    = f.input :day_num
-    = f.input :start_time
-    = f.input :end_time
+    = f.input :conf_id, label: 'Conference Id'
+    = f.input :event_id, label: 'Event Id'
+    = f.input :day_num, label: 'Day number'
+    = f.input :start_time, label: 'Start time'
+    = f.input :end_time, label: 'End time'
 
   .form-actions
     = f.button :submit
