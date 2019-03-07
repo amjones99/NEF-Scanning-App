@@ -45,6 +45,10 @@ class TimetablesController < ApplicationController
     redirect_to timetables_url, notice: 'Timetable was successfully destroyed.'
   end
 
+  def search
+    @timetables = Timetable.where(conf_id: params[:search][:conf_id])
+    @timetables = @timetables.where(name: params[:search][:name]) if params[:search][:name].present?
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_timetable
