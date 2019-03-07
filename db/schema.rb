@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
   create_table "notifications", force: :cascade do |t|
     t.string "not_id"
     t.string "not_des"
-    t.date "time"
+    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
