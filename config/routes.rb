@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   resources :conferences
   resources :timetables
   resources :users
-  resources :bookings
-  
+  resources :bookings do
+    get :newuser, on: :collection
+    get :existing, on: :collection
+  end
+
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
   match "/422", to: "errors#error_422", via: :all
