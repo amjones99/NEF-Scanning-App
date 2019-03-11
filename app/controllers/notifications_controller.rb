@@ -22,6 +22,7 @@ class NotificationsController < ApplicationController
   # POST /notifications
   def create
     @notification = Notification.new(notification_params)
+    @notification.time = Time.now.strftime("%d/%m/%Y %H:%M")
 
     if @notification.save
       redirect_to @notification, notice: 'Notification was successfully created.'

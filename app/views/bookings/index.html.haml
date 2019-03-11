@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Booking reference
-      %th Userid
       %th Institution
       %th Ticket type
       %th Access req
@@ -16,10 +15,14 @@
       %th
 
   %tbody
+    - @bookings_users.each do |user|
+      %tr
+        %td=user.user_id
+
     - @bookings.each do |booking|
       %tr
         %td= booking.booking_reference
-        %td= booking.userid
+        %td= booking.id
         %td= booking.institution
         %td= booking.ticket_type
         %td= booking.access_req

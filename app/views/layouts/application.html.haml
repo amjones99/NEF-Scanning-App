@@ -53,13 +53,13 @@
               = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
                 = fa_icon 'plus-square'
                 Add new
-              = navbar_link_to '#', title: "Create notifications", identifier: :another_page do
+              = navbar_link_to 'notifications/new', title: "Create notifications", identifier: :another_page do
                 = fa_icon 'bell'
                 Create notifications
               = navbar_link_to :users, title: "See participants", identifier: :another_page do
                 = fa_icon 'search'
                 See participants
-                
+
             -# - if user_signed_in?
             -#   %ul.nav.navbar-nav.navbar-right
             -#     %li.dropdown
