@@ -10,9 +10,6 @@ class BookingsController < ApplicationController
   def show
   end
 
-  def existing
-    @booking = Booking.new
-  end
   # GET /bookings/new
 
   # GET /bookings/1/edit
@@ -53,6 +50,6 @@ class BookingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def booking_params
-      params.require(:booking).permit(:booking_reference, :institution, :ticket_type, :access_req, :catering, :attended, :dietary_req, :conf_id, :user_id)
+      params.require(:booking).permit(:booking_reference, :userid, :institution, :ticket_type, :access_req, :catering, :attended, :dietary_req)
     end
 end
