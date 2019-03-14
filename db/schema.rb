@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_130846) do
+ActiveRecord::Schema.define(version: 2019_03_14_133121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_130846) do
     t.string "dietary_req"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conf_id"
     t.integer "user_id"
+    t.integer "conference_id"
   end
 
   create_table "conferences", force: :cascade do |t|
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_130846) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booking_id"
+    t.integer "timetable_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -59,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_130846) do
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "timetable_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -79,13 +82,13 @@ ActiveRecord::Schema.define(version: 2019_03_14_130846) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "conf_id"
     t.integer "event_id"
     t.integer "day_num"
     t.date "start_time"
     t.date "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "conference_id"
   end
 
   create_table "users", force: :cascade do |t|
