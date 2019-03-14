@@ -10,7 +10,6 @@
 #  username   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  booking_id :integer
 #
 
 class User < ApplicationRecord
