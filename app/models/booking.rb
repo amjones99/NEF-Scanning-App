@@ -17,6 +17,6 @@
 #
 
 class Booking < ApplicationRecord
-  has_many :user
+  belongs_to :user
   has_one :conference
 end

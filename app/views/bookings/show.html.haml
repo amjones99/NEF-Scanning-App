@@ -22,6 +22,14 @@
 %p
   %b Dietary req:
   = @booking.dietary_req
+%p
+  %b Conference:
+  = @booking.conference_id
+%p
+  %b User:
+  = @booking.user_id
+
+
 
 = link_to 'Edit', edit_booking_path(@booking)
 \|

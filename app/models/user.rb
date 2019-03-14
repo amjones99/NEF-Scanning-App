@@ -13,7 +13,7 @@
 #
 
 class User < ApplicationRecord
-  belongs_to :booking
+  has_many :booking
   validates :username, :password, :access, :email, :name, presence: true
   validates :access, numericality: { less_than: 4}
   validates :access, numericality: { greater_than: 0}

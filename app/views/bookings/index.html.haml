@@ -4,34 +4,34 @@
   %thead
     %tr
       %th Booking reference
+      %th User
       %th Institution
       %th Ticket type
       %th Access req
       %th Catering
       %th Attended
       %th Dietary req
+      %th Conference
       %th
       %th
       %th
 
   %tbody
-    - @bookings_users.each do |user|
-      %tr
-        %td=user.user_id
-
     - @bookings.each do |booking|
       %tr
         %td= booking.booking_reference
-        %td= booking.id
+        %td= booking.user.username
         %td= booking.institution
         %td= booking.ticket_type
         %td= booking.access_req
         %td= booking.catering
         %td= booking.attended
         %td= booking.dietary_req
+        %td= booking.conference_id
         %td= link_to 'Show', booking
         %td= link_to 'Edit', edit_booking_path(booking)
         %td= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }
+
 
 %br
 

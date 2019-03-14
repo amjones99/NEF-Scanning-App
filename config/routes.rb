@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'scan/new'
-  get 'scan/create'
   resources :notifications
   resources :events
   resources :conferences
@@ -23,8 +21,6 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
 
-  resources :scan, only: [:new]
-  root to: "scan#new"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

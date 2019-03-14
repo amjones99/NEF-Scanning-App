@@ -46,7 +46,7 @@ class TimetablesController < ApplicationController
   end
 
   def search
-    @timetables = Timetable.where(conf_id: params[:search][:conf_id])
+    @timetables = Timetable.where(conference_id: params[:search][:conference_id])
     @timetables = @timetables.where(name: params[:search][:name]) if params[:search][:name].present?
 
   private
@@ -57,6 +57,6 @@ class TimetablesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def timetable_params
-      params.require(:timetable).permit(:session_id, :conf_id, :event_id, :day_num, :start_time, :end_time)
+      params.require(:timetable).permit(:session_id, :conference_id, :event_id, :day_num, :start_time, :end_time)
     end
 end

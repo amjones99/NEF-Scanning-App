@@ -16,5 +16,5 @@ class Timetable < ApplicationRecord
   has_one :event
   has_one :conference
 
-  validates :conf_id, :event_id, :day_num, :start_time, :end_time, presence: true
+  validates :conference_id, :event_id, :day_num, :start_time, :end_time, presence: true
 end
