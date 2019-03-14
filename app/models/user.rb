@@ -10,12 +10,12 @@
 #  username   :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  booking_id :integer
 #
 
 class User < ApplicationRecord
-  has_and_belongs_to_many :bookings
+  belongs_to :booking
   validates :username, :password, :access, :email, :name, presence: true
   validates :access, numericality: { less_than: 4}
   validates :access, numericality: { greater_than: 0}
-
 end

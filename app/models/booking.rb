@@ -12,9 +12,11 @@
 #  ticket_type       :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  conf_id           :integer
+#  conference_id     :integer
+#  user_id           :integer
 #
 
 class Booking < ApplicationRecord
-  has_and_belongs_to_many :users
+  has_many :user
+  has_one :conference
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_202913) do
+ActiveRecord::Schema.define(version: 2019_03_14_133121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
     t.string "dietary_req"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conf_id"
-  end
-
-  create_table "bookings_users", id: false, force: :cascade do |t|
-    t.bigint "booking_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["booking_id", "user_id"], name: "index_bookings_users_on_booking_id_and_user_id"
-    t.index ["user_id", "booking_id"], name: "index_bookings_users_on_user_id_and_booking_id"
+    t.integer "user_id"
+    t.integer "conference_id"
   end
 
   create_table "conferences", force: :cascade do |t|
@@ -41,13 +35,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "conferences_timetables", id: false, force: :cascade do |t|
-    t.bigint "timetable_id", null: false
-    t.bigint "conference_id", null: false
-    t.index ["conference_id", "timetable_id"], name: "index_conferences_timetables_on_conference_id_and_timetable_id"
-    t.index ["timetable_id", "conference_id"], name: "index_conferences_timetables_on_timetable_id_and_conference_id"
+    t.integer "booking_id"
+    t.integer "timetable_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -72,13 +61,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
     t.string "desc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "events_timetables", id: false, force: :cascade do |t|
-    t.bigint "timetable_id", null: false
-    t.bigint "event_id", null: false
-    t.index ["event_id", "timetable_id"], name: "index_events_timetables_on_event_id_and_timetable_id"
-    t.index ["timetable_id", "event_id"], name: "index_events_timetables_on_timetable_id_and_event_id"
+    t.integer "timetable_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -99,13 +82,13 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "conf_id"
     t.integer "event_id"
     t.integer "day_num"
     t.date "start_time"
     t.date "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "conference_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -116,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_03_06_202913) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "booking_id"
   end
 
 end
