@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :timetables
   resources :users
   resources :bookings do
-    get :newuser, on: :collection
     get :existing, on: :collection
   end
 
