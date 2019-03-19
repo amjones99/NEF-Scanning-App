@@ -14,7 +14,7 @@
 
 FactoryBot.define do
   factory :user do
-    userid { 1 }
+    #userid { 1 }
     username { "MyString" }
     password { "MyString" }
     access { 1 }
