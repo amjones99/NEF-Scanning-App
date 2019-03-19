@@ -47,7 +47,7 @@
               = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
-              = navbar_link_to '#', title: "Scan", identifier: :add do
+              = navbar_link_to 'scans#index', title: "Scan", identifier: :add do
                 = fa_icon 'camera'
                 Scan
               = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do

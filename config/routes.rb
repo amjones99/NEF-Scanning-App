@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'scans/index'
+  get 'scans/scan'
   resources :notifications
   resources :events
   resources :conferences
   resources :timetables
   resources :users
+  resources :scans
   resources :bookings do
     get :newuser, on: :collection
     get :existing, on: :collection
