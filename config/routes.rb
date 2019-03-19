@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :users
   resources :scans
   resources :bookings do
-    get :newuser, on: :collection
     get :existing, on: :collection
   end
 
