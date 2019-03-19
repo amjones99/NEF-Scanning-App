@@ -10,12 +10,6 @@ class ConferencesController < ApplicationController
   def show
   end
 
-  def newuser
-  end
-
-  def existing
-  end
-
   # GET /conferences/new
   def new
     @conference = Conference.new

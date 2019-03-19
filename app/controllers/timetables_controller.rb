@@ -48,6 +48,7 @@ class TimetablesController < ApplicationController
   def search
     @timetables = Timetable.where(conference_id: params[:search][:conference_id])
     @timetables = @timetables.where(name: params[:search][:name]) if params[:search][:name].present?
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

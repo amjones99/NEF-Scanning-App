@@ -12,9 +12,9 @@
 #
 
 class Conference < ApplicationRecord
-  belongs_to :timetable
+  has_many :timetable
   has_many :booking
-  
+
   validates :days, :name, :location, presence: true
 
 end

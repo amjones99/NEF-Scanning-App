@@ -13,8 +13,8 @@
 #
 
 class Timetable < ApplicationRecord
-  has_one :event
-  has_one :conference
+  belongs_to :event
+  belongs_to :conference
 
   validates :conference_id, :event_id, :day_num, :start_time, :end_time, presence: true
 end

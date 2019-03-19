@@ -13,6 +13,6 @@
 #
 
 class Event < ApplicationRecord
-  has_one: timetable
+  has_many :timetable
   validates :name, :speaker, :location, :desc, presence: true
 end
