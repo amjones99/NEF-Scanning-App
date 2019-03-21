@@ -22,16 +22,16 @@
 #
 # Indexes
 #
+#  index_users_on_email                 (email)
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :rememberable, :validatable
   has_many :booking
-  # validates :username, :password, :access, :email, :name, presence: true
-  # validates :access, numericality: { less_than: 4}
-  # validates :access, numericality: { greater_than: 0}
+  validates :username, :password, :access, :email, :name, presence: true
+  validates :access, numericality: { less_than: 4}
+  validates :access, numericality: { greater_than: 0}
 end

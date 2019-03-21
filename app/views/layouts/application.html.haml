@@ -64,7 +64,7 @@
               %ul.nav.navbar-nav.navbar-right
                 %li.dropdown
                   = link_to '#', data: { toggle: :dropdown }, class: 'dropdown-toggle', role: 'button', 'aria-haspopup' => true, 'aria-expanded' => false do
-                    = fa_icon 'user', text: current_user.email
+                    = fa_icon 'user', text: current_user.username
                     %b.caret
                   %ul.dropdown-menu
                     %li
