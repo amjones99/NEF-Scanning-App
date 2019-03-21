@@ -4,12 +4,23 @@ Rails.application.routes.draw do
   get 'scans/scan'
   resources :notifications
   resources :events
-  resources :conferences
-  resources :timetables
-  resources :users
-  resources :scans
+  resources :conferences do
+    get :map, on: :collection
+  end
+  resources :timetables do
+    get :timetable, on: :collection
+  end
+  resources :users do
+    get :indexU, on: :collection
+    get :badge, on: :collection
+    get :account, on: :collection
+  end
+  resources :scans do
+    get :qrU, on: :collection
+  end
   resources :bookings do
     get :existing, on: :collection
+    get :import, on: :collection
   end
 
   match "/403", to: "errors#error_403", via: :all
