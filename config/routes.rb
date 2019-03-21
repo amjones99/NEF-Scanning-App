@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     get :indexU, on: :collection
     get :badge, on: :collection
+    get :account, on: :collection
   end
   resources :scans do
     get :qrU, on: :collection
