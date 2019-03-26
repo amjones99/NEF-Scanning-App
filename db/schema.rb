@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_150938) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email"
+    t.boolean "manager"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

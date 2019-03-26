@@ -47,3 +47,5 @@ coverage/index.html
 # Don't version node/npm modules
 node_modules/
 package-lock.json
+
+useless

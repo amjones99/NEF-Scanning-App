@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.where(email:
+'user@a.a').first_or_create!(password:
+'password', access: 1, username: 'user', name: 'User')
