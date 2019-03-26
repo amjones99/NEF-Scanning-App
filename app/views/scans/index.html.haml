@@ -4,26 +4,16 @@
 %body
   %video#preview
   :javascript
-<<<<<<< HEAD
-    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-=======
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
->>>>>>> Nikolay
     scanner.addListener('scan', function (content) {
       window.alert(content);
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
       if (cameras.length > 0) {
-<<<<<<< HEAD
-        scanner.start(cameras[0]);
-      } else {
-        console.error('No cameras found.');
-=======
         scanner.start(cameras[1]);
       } else {
          console.error('No cameras found.');
->>>>>>> Nikolay
       }
     }).catch(function (e) {
       console.error(e);
