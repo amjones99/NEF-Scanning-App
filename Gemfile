@@ -77,3 +77,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
 end
+
+gem 'rqrcode','~> 0.4.2'
+gem 'barby',  '~> 0.6.2'
+gem 'rqrcode-with-patches', '~>0.5.4'

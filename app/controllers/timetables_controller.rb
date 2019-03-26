@@ -45,6 +45,11 @@ class TimetablesController < ApplicationController
     redirect_to timetables_url, notice: 'Timetable was successfully destroyed.'
   end
 
+  def search
+    @timetables = Timetable.where(conference_id: params[:search][:conference_id])
+    @timetables = @timetables.where(name: params[:search][:name]) if params[:search][:name].present?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_timetable
@@ -53,6 +58,6 @@ class TimetablesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def timetable_params
-      params.require(:timetable).permit(:session_id, :conf_id, :event_id, :day_num, :start_time, :end_time)
+      params.require(:timetable).permit(:session_id, :conference_id, :event_id, :day_num, :start_time, :end_time)
     end
 end

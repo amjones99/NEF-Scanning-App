@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_133210) do
+ActiveRecord::Schema.define(version: 2019_03_21_150938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.integer "booking_reference"
-    t.integer "userid"
     t.string "institution"
     t.integer "ticket_type"
     t.boolean "access_req"
@@ -26,30 +25,18 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
     t.string "dietary_req"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conf_id"
-  end
-
-  create_table "bookings_users", id: false, force: :cascade do |t|
-    t.bigint "booking_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["booking_id", "user_id"], name: "index_bookings_users_on_booking_id_and_user_id"
-    t.index ["user_id", "booking_id"], name: "index_bookings_users_on_user_id_and_booking_id"
+    t.integer "user_id"
+    t.integer "conference_id"
   end
 
   create_table "conferences", force: :cascade do |t|
-    t.integer "conf_id"
     t.integer "days"
     t.string "name"
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "conferences_timetables", id: false, force: :cascade do |t|
-    t.bigint "timetable_id", null: false
-    t.bigint "conference_id", null: false
-    t.index ["conference_id", "timetable_id"], name: "index_conferences_timetables_on_conference_id_and_timetable_id"
-    t.index ["timetable_id", "conference_id"], name: "index_conferences_timetables_on_timetable_id_and_conference_id"
+    t.date "start_date"
+    t.date "end_date"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -68,7 +55,6 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "event_id"
     t.string "name"
     t.string "speaker"
     t.string "location"
@@ -77,17 +63,10 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events_timetables", id: false, force: :cascade do |t|
-    t.bigint "timetable_id", null: false
-    t.bigint "event_id", null: false
-    t.index ["event_id", "timetable_id"], name: "index_events_timetables_on_event_id_and_timetable_id"
-    t.index ["timetable_id", "event_id"], name: "index_events_timetables_on_timetable_id_and_event_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string "not_id"
     t.string "not_des"
-    t.date "time"
+    t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,25 +81,33 @@ ActiveRecord::Schema.define(version: 2019_03_05_133210) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "session_id"
-    t.integer "conf_id"
     t.integer "event_id"
     t.integer "day_num"
-    t.date "start_time"
-    t.date "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "conference_id"
+    t.time "start_time"
+    t.time "end_time"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "userid"
     t.string "username"
-    t.string "password"
     t.integer "access"
     t.string "email"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.boolean "manager"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

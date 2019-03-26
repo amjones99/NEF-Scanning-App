@@ -1,23 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Session:
-  = @timetable.session_id
+  %b Conference Id :
+  = @timetable.conference_id
 %p
-  %b Conf:
-  = @timetable.conf_id
-%p
-  %b Event:
+  %b Event Id:
   = @timetable.event_id
 %p
-  %b Day num:
+  %b Day number:
   = @timetable.day_num
 %p
   %b Start time:
-  = @timetable.start_time
+  = @timetable.start_time.strftime("%H:%M:%S")
 %p
   %b End time:
-  = @timetable.end_time
+  = @timetable.end_time.strftime("%H:%M:%S")
 
 = link_to 'Edit', edit_timetable_path(@timetable)
 \|

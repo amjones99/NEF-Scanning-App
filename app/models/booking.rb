@@ -10,12 +10,13 @@
 #  dietary_req       :string
 #  institution       :string
 #  ticket_type       :integer
-#  userid            :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  conf_id           :integer
+#  conference_id     :integer
+#  user_id           :integer
 #
 
 class Booking < ApplicationRecord
-  has_and_belongs_to_many :users
+  belongs_to :user
+  belongs_to :conference
 end

@@ -9,9 +9,9 @@
 #  speaker    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  event_id   :integer
 #
 
 class Event < ApplicationRecord
-  has_and_belongs_to_many :timetables
+  has_many :timetable
+  validates :name, :speaker, :location, :desc, presence: true
 end

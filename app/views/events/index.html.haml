@@ -7,7 +7,7 @@
       %th Name
       %th Speaker
       %th Location
-      %th Desc
+      %th Description
       %th
       %th
       %th
@@ -15,7 +15,7 @@
   %tbody
     - @events.each do |event|
       %tr
-        %td= event.event_id
+        %td= event.id
         %td= event.name
         %td= event.speaker
         %td= event.location

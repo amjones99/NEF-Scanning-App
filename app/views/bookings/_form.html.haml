@@ -5,13 +5,14 @@
 
   .form-inputs
     = f.input :booking_reference
-    = f.input :userid
     = f.input :institution
     = f.input :ticket_type
     = f.input :access_req
     = f.input :catering
     = f.input :attended
     = f.input :dietary_req
+    = f.association :conference
+    = f.association :user
 
   .form-actions
     = f.button :submit
