@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'scans/index'
-  get 'scans/scan'
+  devise_for :users
   resources :notifications
   resources :events
   resources :conferences do
@@ -30,7 +29,8 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-
+  get 'scans/index'
+  get 'scans/scan'
 
   root to: "pages#home"
 
