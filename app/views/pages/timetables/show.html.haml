@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Session:
+  = @timetable.session_id
+%p
+  %b Conf:
+  = @timetable.conference_id
+%p
+  %b Event:
+  = @timetable.event_id
+%p
+  %b Day num:
+  = @timetable.day_num
+%p
+  %b Start time:
+  = @timetable.start_time
+%p
+  %b End time:
+  = @timetable.end_time
+
+= link_to 'Edit', edit_timetable_path(@timetable)
+\|
+= link_to 'Back', timetables_path
