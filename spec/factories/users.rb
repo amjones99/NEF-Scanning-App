@@ -8,6 +8,7 @@
 #  current_sign_in_ip     :inet
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  institution            :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
 #  manager                :boolean
