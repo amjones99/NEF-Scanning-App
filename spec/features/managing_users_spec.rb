@@ -6,7 +6,7 @@ describe 'Managing users' do
     visit '/users/new'
     fill_in 'Username', with: 'user1'
     fill_in 'Password', with: 'password'
-    fill_in 'Access', with: '1'
+    fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user1'
     click_button 'Create User'
@@ -22,7 +22,7 @@ describe 'Managing users' do
     click_link 'Edit'
     fill_in 'Username', with: 'user'
     fill_in 'Password', with: 'password'
-    fill_in 'Access', with: '1'
+    fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user'
     click_button 'Update User'
@@ -34,7 +34,6 @@ describe 'Managing users' do
 
   specify 'I can see a list of users' do
     user1 = FactoryBot.create :user, name: 'User1'
-    user2 = FactoryBot.create :user, name: 'User2'
     visit '/users'
     within(:css, 'table') {expect(page).to have_content 'User1'}
     within(:css, 'table') {expect(page).to have_content 'User2'}
