@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   def index
     if sort_column and sort_direction
-      @users = User.order(sort_column + " " + sort_direction)
+      @users_with_attended = User.order(sort_column + " " + sort_direction)
     else
-      @users = User.all()
+      @users_with_attended = User.select("*,bookings.attended as bookings_attended").joins(:booking).where("bookings.user_id = users.id")
     end
+      @users_with_attended = User.select("*,bookings.attended as bookings_attended").joins(:booking).where("bookings.user_id = users.id")
   end
 
   # GET /users/1
