@@ -4,10 +4,8 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :not_id
-    = f.input :not_des
     = f.input :not_id, label: 'Notification Name'
-    = f.input :not_des, label: 'Notication Description'
+    = f.input :not_des, label: 'Notification Description'
 
   .form-actions
     = f.button :submit
