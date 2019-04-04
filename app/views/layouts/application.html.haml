@@ -39,12 +39,12 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            = link_to :root, class: 'navbar-brand hidden-sm' do
+            = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
               NEF Scanning App
 
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
-              = navbar_link_to :root, title: "Go to the home page", identifier: :home do
+              = navbar_link_to 'pages/home', title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
               = navbar_link_to '/scans#index', title: "Scan", identifier: :add do

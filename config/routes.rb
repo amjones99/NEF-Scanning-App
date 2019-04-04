@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     get :existing, on: :collection
     get :import, on: :collection
   end
+  resources :pages do
+    get :home, on: :collection
+  end
 
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
   get 'scans/index'
   get 'scans/scan'
 
-  root to: "pages#home"
+  root to: "users#indexU"
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
