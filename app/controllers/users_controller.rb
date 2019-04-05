@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   # GET /users
   def index
     if sort_column and sort_direction
-      @users = User.order(sort_column + " " + sort_direction)
-    else
-      @users = User.all()
+      @users_with_attended = User.order(sort_column + " " + sort_direction)
+      .select("*,bookings.attended as bookings_attended").joins(:booking)
+      .where("bookings.user_id = users.id")
     end
   end
 
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     # Preventing against sql injection for sorting
     def sort_column
-      User.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      User.column_names.include?(params[:sort]) ? params[:sort] : "Username"
     end
 
     def sort_direction
