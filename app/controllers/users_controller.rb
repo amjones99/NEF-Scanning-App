@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
+
   # GET /users
   def index
-      @users_with_attended = User.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+      @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
   # GET /users/1
@@ -55,4 +57,11 @@ class UsersController < ApplicationController
       params.require(:user).permit(:userid, :username, :password, :access, :institution, :email, :name)
     end
 
+    def sort_column
+      User.column_names.include?(params[:sort]) ? params[:sort] : "Username"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end
