@@ -1,15 +1,16 @@
-%h2 Listing users
+%h2 All users
 
 .table-responsive
 %table.table.table-striped
   %thead
     %tr
       %th= sortable 'Username'
-      %th= sortable 'Access'
-      %th= sortable 'Email'
-      %th= sortable 'Institution'
-      %th= sortable 'Name'
-      %th= sortable 'Attended'
+      %th= sortable 'access', 'Access'
+      %th= sortable 'institution', 'Institution'
+      %th= sortable 'email', 'Email'
+      %th= sortable 'name', 'Name'
+      %th= sortable 'attended', 'Attended'
+      %th
       %th
       %th
 
@@ -18,8 +19,8 @@
       %tr
         %td= user.username
         %td= user.access
-        %td= user.email
         %td= user.institution
+        %td= user.email
         %td= user.name
         %td= user.bookings_attended
         %td= link_to 'Show', user
