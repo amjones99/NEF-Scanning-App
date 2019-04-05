@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /events
   def index
-    @events = Event.all
+    @events = Event.order(sort_column + " " + sort_direction)
   end
 
   # GET /events/1
@@ -53,6 +53,15 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:event_id, :name, :speaker, :location, :desc)
+      params.require(:event).permit(:event_id, :name, :speaker, :location, :description)
     end
+
+    def sort_column
+      Event.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
 end

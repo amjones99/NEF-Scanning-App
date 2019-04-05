@@ -2,13 +2,13 @@
 #
 # Table name: events
 #
-#  id         :bigint(8)        not null, primary key
-#  desc       :string
-#  location   :string
-#  name       :string
-#  speaker    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  description :string
+#  location    :string
+#  name        :string
+#  speaker     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 FactoryBot.define do
@@ -17,6 +17,6 @@ FactoryBot.define do
     name { "MyString" }
     speaker { "MyString" }
     location { "MyString" }
-    desc { "MyString" }
+    description { "MyString" }
   end
 end

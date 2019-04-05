@@ -1,13 +1,13 @@
 %h1 Listing events
 
-%table
+.table-responsive
+%table.table.table-striped
   %thead
     %tr
-      %th Event
-      %th Name
-      %th Speaker
-      %th Location
-      %th Description
+      %th= sortable 'name', 'Name'
+      %th= sortable 'speaker', 'Speaker'
+      %th= sortable 'location', 'Location'
+      %th= sortable 'description', 'Description'
       %th
       %th
       %th
@@ -15,11 +15,10 @@
   %tbody
     - @events.each do |event|
       %tr
-        %td= event.id
         %td= event.name
         %td= event.speaker
         %td= event.location
-        %td= event.desc
+        %td= event.description
         %td= link_to 'Show', event
         %td= link_to 'Edit', edit_event_path(event)
         %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
