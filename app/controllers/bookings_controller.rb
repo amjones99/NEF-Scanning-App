@@ -1,9 +1,11 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
+
 
   # GET /bookings
   def index
-    @bookings = Booking.all
+    @bookings = Booking.order(sort_column + " " + sort_direction)
   end
 
   # GET /bookings/1
@@ -53,5 +55,13 @@ class BookingsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def booking_params
       params.require(:booking).permit(:booking_reference, :institution, :ticket_type, :access_req, :catering, :attended, :dietary_req, :conference_id, :user_id)
+    end
+
+    def sort_column
+      Booking.column_names.include?(params[:sort]) ? params[:sort] : "booking_reference"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

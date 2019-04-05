@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_144426) do
     t.string "name"
     t.string "speaker"
     t.string "location"
-    t.string "desc"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,9 +1,9 @@
 class TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /timetables
   def index
-    @timetables = Timetable.all
+    @timetables = Timetable.order(sort_column + " " + sort_direction)
   end
 
   # GET /timetables/1
@@ -59,5 +59,13 @@ class TimetablesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def timetable_params
       params.require(:timetable).permit(:session_id, :conference_id, :event_id, :day_num, :start_time, :end_time)
+    end
+
+    def sort_column
+      Timetable.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

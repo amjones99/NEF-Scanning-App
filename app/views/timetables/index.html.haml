@@ -1,13 +1,14 @@
-%h1 Listing Sessions
+%h1 Listing Timetable
 
-%table
+.table-responsive
+%table.table.table-striped
   %thead
     %tr
-      %th Conf
-      %th Event
-      %th Day num
-      %th Start time
-      %th End time
+      %thh= sortable 'name' , 'Conference'
+      %th= sortable 'event_id', 'Event'
+      %th= sortable 'day_num', 'Day'
+      %th= sortable 'start_time', 'Start time'
+      %th= sortable 'end_time',  'End time'
       %th
       %th
       %th

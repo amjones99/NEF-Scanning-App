@@ -1,11 +1,12 @@
-%h1 Listing notifications
+%h1 Notifications
 
-%table
+.table-responsive
+%table.table.table-striped
   %thead
     %tr
-      %th Notification Name
-      %th Notification Description
-      %th Time
+      %th= sortable 'not_id', 'Notification Name'
+      %th= sortable 'not_des', 'Notification Description'
+      %th= sortable 'time', 'Time'
       %th
       %th
       %th

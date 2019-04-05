@@ -1,17 +1,18 @@
 %h1 Listing bookings
 
-%table
+.table-responsive
+%table.table.table-striped
   %thead
     %tr
-      %th Booking reference
-      %th User
-      %th Institution
-      %th Ticket type
-      %th Access req
-      %th Catering
-      %th Attended
-      %th Dietary req
-      %th Conference
+      %th= sortable 'booking_reference', 'Booking Reference'
+      %th= sortable 'user_id', 'User'
+      %th= sortable 'institution', 'Institution'
+      %th= sortable 'ticket_type', 'Ticket Type'
+      %th= sortable 'access_req', 'Access Requirements'
+      %th= sortable 'catering', 'Catering'
+      %th= sortable 'attended', 'Attended'
+      %th= sortable 'dietary_req', 'Dietary Requirements'
+      %th= sortable 'conference_id', 'Conference'
       %th
       %th
       %th

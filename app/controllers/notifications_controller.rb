@@ -1,9 +1,9 @@
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /notifications
   def index
-    @notifications = Notification.all
+    @notifications = Notification.order(sort_column + " " + sort_direction)
   end
 
   # GET /notifications/1
@@ -55,5 +55,13 @@ class NotificationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def notification_params
       params.require(:notification).permit(:not_id, :not_des, :time)
+    end
+
+    def sort_column
+      Notification.column_names.include?(params[:sort]) ? params[:sort] : "not_id"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
