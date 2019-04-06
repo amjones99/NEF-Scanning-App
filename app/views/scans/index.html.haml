@@ -6,7 +6,19 @@
   :javascript
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
     scanner.addListener('scan', function (content) {
-      window.alert(content);
+       console.log(content);
+       window.alert("User scanned in successfully");
+       var bookingref = content;
+      $.ajax({
+        type: "POST",
+        method: "PATCH",
+        url: `/bookings/${bookingref}`,
+        data: {'booking[attended]': 1},
+        success: function() {
+          console.log('...');
+        },
+        // dataType: dataType
+      });
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
@@ -18,3 +30,6 @@
     }).catch(function (e) {
       console.error(e);
     });
+
+%br
+= link_to 'Codes', qrU_scans_path

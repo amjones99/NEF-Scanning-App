@@ -7,6 +7,10 @@ class UsersController < ApplicationController
       @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
+  # def indexU
+  #   @userbooking = Booking.find(params[:id])
+  # end
+
   # GET /users/1
   def show
   end

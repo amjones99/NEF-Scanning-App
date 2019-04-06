@@ -1,1 +1,17 @@
 %h1 QR Code
+%table
+  %thead
+    %tr
+      %th Booking Reference
+
+  %tbody
+    - @bookings.each do |b|
+      %tr
+        %td= b.booking_reference
+
+%br
+
+- @bookings.each do |b|
+  %img{src: generate_qr(b.booking_reference), class: "qr-code"}
+
+= link_to 'Back', scans_path
