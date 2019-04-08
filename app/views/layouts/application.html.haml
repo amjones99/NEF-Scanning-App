@@ -44,7 +44,7 @@
 
           .collapse.navbar-collapse
             %ul.nav.navbar-nav
-              = navbar_link_to 'pages/home', title: "Go to the home page", identifier: :home do
+              = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                 = fa_icon 'home'
                 Home
               = navbar_link_to '/scans#index', title: "Scan", identifier: :add do
@@ -52,13 +52,19 @@
                 Scan
               = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
                 = fa_icon 'plus-square'
-                Add new
+                Add User
               = navbar_link_to '/notifications/new', title: "Create notifications", identifier: :another_page do
                 = fa_icon 'bell'
-                Create notifications
+                Notifications
               = navbar_link_to :users, title: "See participants", identifier: :another_page do
                 = fa_icon 'search'
-                See participants
+                Participants
+              = navbar_link_to :conferences, title: "Conferences", identifier: :another_page do
+                = fa_icon 'group'
+                Conferences
+              = navbar_link_to :bookings, title: "Bookings", identifier: :another_page do
+                = fa_icon 'book'
+                Bookings
 
             - if user_signed_in?
               %ul.nav.navbar-nav.navbar-right
