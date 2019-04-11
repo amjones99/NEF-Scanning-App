@@ -18,6 +18,9 @@
 %p
   %b Name:
   = @user.name
+%p
+  %b Booking Reference:
+  = @user.booking_reference
 
 = link_to 'Edit', edit_user_path(@user)
 \|
