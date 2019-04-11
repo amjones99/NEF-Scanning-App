@@ -5,7 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  access_req        :boolean
 #  attended          :boolean
-#  booking_reference :integer
+#  booking_reference :text
 #  catering          :boolean
 #  dietary_req       :string
 #  institution       :string
