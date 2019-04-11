@@ -5,6 +5,14 @@ class ScansController < ApplicationController
   def scan
   end
 
+  def home
+    @bookings = Booking.all
+  end
+
+
+
+
+
   def qrU
     @bookings = Booking.all
   end
