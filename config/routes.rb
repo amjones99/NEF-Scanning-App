@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get :account, on: :collection
   end
   resources :scans do
+    get :home, on: :collection
     get :qrU, on: :collection
   end
   resources :bookings do
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
   get 'scans/scan'
   get 'scans/qrU'
   get 'scans/show/:id', to: 'scans#show'
+  get 'scans/home'
 
 
   root to: "users#indexU"
