@@ -45,7 +45,5 @@
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  = link_to '/users/account' , method: :edit , title: "edit account information" do
-                    = fa_icon 'cog', text: 'account'
                   = link_to destroy_user_session_path, method: :delete, title: "Log out of the system" do
                     = fa_icon 'sign-out', text: 'Log out'

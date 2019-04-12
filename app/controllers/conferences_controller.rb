@@ -4,6 +4,9 @@ class ConferencesController < ApplicationController
   # GET /conferences
   def index
     @conferences = Conference.order(sort_column + " " + sort_direction)
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /conferences/1

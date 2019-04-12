@@ -3,6 +3,9 @@ class NotificationsController < ApplicationController
   helper_method :sort_column, :sort_direction
   # GET /notifications
   def index
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @notifications = Notification.order(sort_column + " " + sort_direction)
   end
 

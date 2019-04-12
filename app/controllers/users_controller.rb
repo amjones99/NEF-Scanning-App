@@ -2,26 +2,50 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
+
+
   # GET /users
   def index
-      @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
+    @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
-  # def indexU
-  #   @userbooking = Booking.find(params[:id])
+
+  def indexU
+    if current_user.access == 1
+        redirect_to "/users/"
+    end
+  end
   # end
 
+
+  def badge
+    if current_user.access == 1
+      redirect_to "/users/"
+    end
+  end
   # GET /users/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /users/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @user = User.new
   end
 
   # GET /users/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /users

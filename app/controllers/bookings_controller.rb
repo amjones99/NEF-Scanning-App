@@ -6,6 +6,9 @@ class BookingsController < ApplicationController
   # GET /bookings
   def index
     @bookings = Booking.order(sort_column + " " + sort_direction)
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /bookings/1

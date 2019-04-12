@@ -3,8 +3,13 @@ class TimetablesController < ApplicationController
   helper_method :sort_column, :sort_direction
   # GET /timetables
   def index
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @timetables = Timetable.order(sort_column + " " + sort_direction)
   end
+
+
 
   # GET /timetables/1
   def show
