@@ -45,6 +45,14 @@ gem 'delayed_job_active_record'
 gem 'delayed-plugins-airbrake'
 gem 'daemons'
 
+
+gem 'rqrcode','~> 0.4.2'
+gem 'barby',  '~> 0.6.2'
+gem 'rqrcode-with-patches', '~>0.5.4'
+
+gem "roo"
+gem "iconv", "~> 1.0.3"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'byebug'
@@ -77,7 +85,3 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
 end
-
-gem 'rqrcode','~> 0.4.2'
-gem 'barby',  '~> 0.6.2'
-gem 'rqrcode-with-patches', '~>0.5.4'

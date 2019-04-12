@@ -19,11 +19,15 @@ Rails.application.routes.draw do
   end
   resources :bookings do
     get :existing, on: :collection
-    get :import, on: :collection
+    get :importing, on: :collection
+    collection do
+      post 'import'
+    end
   end
   resources :pages do
     get :home, on: :collection
   end
+
 
   match "/403", to: "errors#error_403", via: :all
   match "/404", to: "errors#error_404", via: :all
