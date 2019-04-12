@@ -5,16 +5,13 @@
   %b Username:
   = current_user.username
 %p
-  %b Password:
-  = current_user.password
-%p
   %b Email:
   = current_user.email
 %p
   %b Name:
   = current_user.name
 %p
-  %b Name:
+  %b Booking Reference:
   = current_user.booking_reference
 
 = link_to 'Edit', edit_user_path(current_user)
