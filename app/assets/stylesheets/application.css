@@ -10,4 +10,5 @@
   *= require custom_flash
   *= require environment_notice
   *= require users
+  *= require bootstrap-table/bootstrap-table
 */
