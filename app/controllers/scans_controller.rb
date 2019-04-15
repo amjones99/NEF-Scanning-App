@@ -6,6 +6,9 @@ class ScansController < ApplicationController
   end
 
   def scan
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   def home

@@ -13,6 +13,9 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   def existing

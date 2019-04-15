@@ -8,15 +8,24 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /events/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @event = Event.new
   end
 
   # GET /events/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /events

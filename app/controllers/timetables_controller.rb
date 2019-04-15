@@ -13,15 +13,24 @@ class TimetablesController < ApplicationController
 
   # GET /timetables/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /timetables/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @timetable = Timetable.new
   end
 
   # GET /timetables/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /timetables
