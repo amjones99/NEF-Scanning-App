@@ -1,20 +1,18 @@
-%h1 Account
-%p#notice= notice
+%h1 Editing user
 
-%p
-  %b Username:
-  = current_user.username
-%p
-  %b Email:
-  = current_user.email
-%p
-  %b Name:
-  = current_user.name
-%p
-  %b Booking Reference:
-  = current_user.booking_reference
+= simple_form_for(@user) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-= link_to 'Edit', "/users/editU"
+  .form-inputs
+    = f.input :username
+    = f.input :password
+    = f.input :institution
+    = f.input :email
+    = f.input :name
+
+  .form-actions
+    = f.button :submit
 
 #wrap
   %nav#main-nav.navbar.navbar-default.navbar-fixed-top
@@ -50,7 +48,6 @@
           = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
             = fa_icon 'bell'
             Notifications
-
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right

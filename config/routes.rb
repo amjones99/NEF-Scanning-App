@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :users do
     get :indexU, on: :collection
+    get :editU, on: :collection
     get :badge, on: :collection
     get :account, on: :collection
     get :notificationsU, on: :collection
