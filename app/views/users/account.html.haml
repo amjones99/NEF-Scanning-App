@@ -47,7 +47,11 @@
           = navbar_link_to '/users/account', title: "account", identifier: :another_page do
             = fa_icon 'cog'
             Account
+          = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
+            = fa_icon 'bell'
+            Notifications
 
+            
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown

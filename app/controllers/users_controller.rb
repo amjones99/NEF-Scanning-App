@@ -19,6 +19,12 @@ class UsersController < ApplicationController
     end
   end
   # end
+  def notificationsU
+    if current_user.access == 1
+      redirect_to "/users/"
+    end
+    @notifications = Notification.all
+  end
 
 
   def badge
@@ -83,6 +89,10 @@ class UsersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:userid, :username, :password, :access, :institution, :email, :name, :booking_reference)
+    end
+
+    def notification_params
+      params.require(:notification).permit(:not_id, :not_des, :time)
     end
 
     def sort_column
