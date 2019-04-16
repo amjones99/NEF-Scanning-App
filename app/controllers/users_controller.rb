@@ -72,11 +72,22 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+    if user_params["password"].blank?
+      if @user.update(user_params.except("password"))
+        sign_in(@user, :bypass => true)
+        redirect_to '/users/account', notice: 'User was successfully updated.'
+      else
+        render :edit
+      end
     else
-      render :edit
+      if @user.update(user_params)
+        sign_in(@user, :bypass => true)
+        redirect_to '/users/account', notice: 'User was successfully updated.'
+      else
+        render :edit
+      end
     end
+
   end
 
   # DELETE /users/1

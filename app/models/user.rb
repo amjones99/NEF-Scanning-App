@@ -32,13 +32,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :validatable
   has_many :booking
-  validates :username, :password, :access, :email, :name, presence: true
+  validates :username, :password, :access, :email, :name, presence: true, on: new
   validates :access, numericality: { less_than: 4}
   validates :access, numericality: { greater_than: 0}
 
 
-  csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true)
-  p csv['Organisation']
+  #csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true)
+  #p csv['Organisation']
 
 
 
