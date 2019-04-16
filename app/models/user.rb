@@ -37,8 +37,8 @@ class User < ApplicationRecord
   validates :access, numericality: { greater_than: 0}
 
 
-  #csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true)
-  #p csv['Organisation']
+  csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true)
+  p csv['Organisation']
 
 
 
