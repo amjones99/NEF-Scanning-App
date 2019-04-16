@@ -11,8 +11,11 @@ class BookingsController < ApplicationController
     end
   end
 
-  # def import
-  # end
+  def import
+    Booking.import(params[:file])
+    redirect_to root_url, notice: "YEET"
+  end
+
 
   # GET /bookings/1
   def show

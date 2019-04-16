@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get :timetable, on: :collection
   end
   resources :users do
+    collection {post :import}
     get :indexU, on: :collection
     get :editU, on: :collection
     get :badge, on: :collection
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     get :qrU, on: :collection
   end
   resources :bookings do
+    collection {post :import}
     get :existing, on: :collection
     get :import, on: :collection
   end
