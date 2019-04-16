@@ -34,7 +34,6 @@ FactoryBot.define do
     access { 1 }
     email { "email@email" }
     name { "MyString" }
-    institution {'sheffield university'}
-    booking_reference {1111}
+    institution {'sheffield university'}  
   end
 end
