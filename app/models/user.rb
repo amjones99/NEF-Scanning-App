@@ -27,7 +27,7 @@
 #
 
 class User < ApplicationRecord
-  require 'csv'
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :validatable
@@ -35,10 +35,6 @@ class User < ApplicationRecord
   validates :username, :password, :access, :email, :name, presence: true, on: new
   validates :access, numericality: { less_than: 4}
   validates :access, numericality: { greater_than: 0}
-
-
-  csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true)
-  p csv['Organisation']
 
 
 

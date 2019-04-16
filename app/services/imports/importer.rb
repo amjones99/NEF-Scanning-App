@@ -5,7 +5,8 @@ class Imports::Importer
   end
 
   def import
-    csv = CSV.read(@path, headers: true, skip_blanks: true)
+    # csv = CSV.read("/opt/ltsphome/acd17cm/Documents/MEMES.csv", :headers=>true, skip_blanks: true)
+    # csv = CSV.read(@path, headers: true, skip_blanks: true)
     csv_valid = (['Name','Organisation','Email','Dietary Requirements', 'Access Requirements', 'IOP Competition', 'Registration Type',	'Registration Route', 'Early/Standard/Late',	'Income', 'Online Store Ref/ITO', 'Conference ID'] - csv.headers.compact).empty?
     return false unless csv_valid
 
