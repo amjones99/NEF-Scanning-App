@@ -2,8 +2,10 @@
 
 %h3 welcome
 = current_user.name
-%h3 QR code
-%img{src: generate_qr(current_user.booking_reference), class: "qr-code"}
+%h3 QR codes
+- @bookingUserID.each do |b|
+  %br
+  %img{src: generate_qr(b.booking_reference), class: "qr-code"}
 %h3 Booked conferences
 
 #wrap

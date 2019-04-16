@@ -4,7 +4,6 @@
 #
 #  id                     :bigint(8)        not null, primary key
 #  access                 :integer
-#  booking_reference      :string
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
 #  email                  :string
