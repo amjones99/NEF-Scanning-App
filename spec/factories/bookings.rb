@@ -3,7 +3,7 @@
 # Table name: bookings
 #
 #  id                :bigint(8)        not null, primary key
-#  access_req        :boolean
+#  access_req        :text
 #  attended          :boolean
 #  booking_reference :text
 #  catering          :boolean

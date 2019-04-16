@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
     end
   end
 
+  # def import
+  # end
+
   # GET /bookings/1
   def show
     if current_user.access == 2
