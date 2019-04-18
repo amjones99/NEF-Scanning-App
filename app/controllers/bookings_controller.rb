@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
 
   def import
     Booking.import(params[:file])
-    redirect_to root_url, notice: "YEET"
+    redirect_to bookings_url, notice: "Successfully Imported File!"
   end
 
 

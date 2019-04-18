@@ -22,12 +22,13 @@ class Booking < ApplicationRecord
   belongs_to :conference
 
   def self.import(file)
-    # csv = CSV.read("/opt/ltsphome/acd17cm/Documents/1234.csv", :headers=>true, skip_blanks: true)
-  #   csv = CSV.read(@path, headers: true, skip_blanks: true)
-    # csv_valid = (['Name','Organisation','Email','Dietary Requirements', 'Access Requirements', 'IOP Competition', 'Registration Type',	'Registration Route', 'Early/Standard/Late',	'Income', 'Online Store Ref/ITO', 'Conference ID'] - csv.headers.compact).empty?
-    # return false unless csv_valid
-  #
-    csv.each do |b|
+    csv = CSV.read(file.path, headers: true, skip_blanks: true)
+    csv_valid = (['Name','Organisation','Email','Dietary Requirements', 'Access Requirements', 'IOP Competition', 'Registration Type',	'Registration Route', 'Early/Standard/Late',	'Income', 'Online Store Ref/ITO', 'Conference ID'] - csv.headers.compact).empty?
+
+
+    CSV.foreach(file.path, headers: true, skip_blanks: true) do |b|
+
+    return false unless csv_valid
     new_user = User.new
     new_user.name = b["Name"]
     new_user.email = b["Email"]

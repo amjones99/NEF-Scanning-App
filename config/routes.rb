@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get :timetable, on: :collection
   end
   resources :users do
-    collection {post :import}
+
     get :indexU, on: :collection
     get :editU, on: :collection
     get :badge, on: :collection
