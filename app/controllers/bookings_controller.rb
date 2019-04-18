@@ -10,13 +10,7 @@ class BookingsController < ApplicationController
       redirect_to "/users/indexU"
     end
   end
-
-  def import
-    Booking.import(params[:file])
-    redirect_to bookings_url, notice: "Successfully Imported File!"
-  end
-
-
+  
   # GET /bookings/1
   def show
     if current_user.access == 2

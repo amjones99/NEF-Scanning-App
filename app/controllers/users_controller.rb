@@ -2,8 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
 
-
-
   # GET /users
   def index
     if current_user.access == 2
@@ -13,6 +11,7 @@ class UsersController < ApplicationController
     @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
+  #  GET /indexU
   def indexU
     if current_user.access == 1
         redirect_to "/users/"
@@ -20,6 +19,14 @@ class UsersController < ApplicationController
    @bookingUserID = Booking.where(user_id: current_user.id)
   end
   # end
+
+  # GET /import
+  def import
+    User.import(params[:file])
+    redirect_to root_url, notice: "Successfully Imported File!"
+  end
+
+  # GET /notificationsU
   def notificationsU
     if current_user.access == 1
       redirect_to "/users/"
@@ -27,16 +34,18 @@ class UsersController < ApplicationController
     @notifications = Notification.all
   end
 
+  # GET /editU
   def editU
     @user = current_user
   end
 
-
+  # GET /badge
   def badge
     if current_user.access == 1
       redirect_to "/users/"
     end
   end
+
   # GET /users/1
   def show
     if current_user.access == 2
