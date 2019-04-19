@@ -9,11 +9,7 @@
       %th= sortable 'institution', 'Institution'
       %th= sortable 'email', 'Email'
       %th= sortable 'name', 'Name'
-      %th= sortable 'booking_reference', 'Booking Ref'
       %th= sortable 'attended', 'Attended'
-      %th
-      %th
-      %th
 
   %tbody
     - @users_with_attended.each do |user|
@@ -23,7 +19,6 @@
         %td= user.institution
         %td= user.email
         %td= user.name
-        %td= user.booking_reference
         %td= user.bookings_attended
         %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user)
@@ -33,3 +28,7 @@
 
 
 = link_to 'New User', new_user_path
+
+= form_tag import_users_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import"

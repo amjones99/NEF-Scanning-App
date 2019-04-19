@@ -8,23 +8,23 @@
 
 User.where(email:
 'user@a.a').first_or_create!(password:
-'password', access: 1, username: 'user',  institution: 'Sheffield University', name: 'User', booking_reference: 11111 )
+'password', access: 1, username: 'user',  institution: 'Sheffield University', name: 'User')
 
 User.where(email:
 'admin@a.a').first_or_create!(password:
-'password', access: 1, username: 'admin', institution: 'Sheffield University', name: 'Adminstrator', booking_reference: 11112 )
+'password', access: 1, username: 'admin', institution: 'Sheffield University', name: 'Adminstrator')
 
 User.where(email:
 'delegate1@a.a').first_or_create!(password:
-'password', access: 2, username: 'delegate', institution: 'Sheffield University', name: 'Delegate 1', booking_reference: 11113 )
+'password', access: 2, username: 'delegate', institution: 'Sheffield University', name: 'Delegate 1')
 
 User.where(email:
 'delegate2@a.a').first_or_create!(password:
-'password', access: 2, username: 'delegate2', institution: 'Sheffield University', name: 'Delegate 2', booking_reference: 11114 )
+'password', access: 2, username: 'delegate2', institution: 'Sheffield University', name: 'Delegate 2')
 
 User.where(email:
 'test@a.a').first_or_create!(password:
-'password', access: 2, username: 'test', institution: 'Sheffield University', name: 'Test User', booking_reference: 11115 )
+'password', access: 2, username: 'test', institution: 'Sheffield University', name: 'Test User')
 
 Conference.create(days: 2, name: 'conference 1', location: 'Sheffield Hallam')
 

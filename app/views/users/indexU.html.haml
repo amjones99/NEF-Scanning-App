@@ -2,9 +2,12 @@
 
 %h3 welcome
 = current_user.name
-%h3 QR code
-%img{src: generate_qr(current_user.booking_reference), class: "qr-code"}
+%h3 QR codes
+- @bookingUserID.each do |b|
+  %br
+  %img{src: generate_qr(b.booking_reference), class: "qr-code"}
 %h3 Booked conferences
+
 #wrap
   %nav#main-nav.navbar.navbar-default.navbar-fixed-top
     .container
@@ -36,6 +39,9 @@
           = navbar_link_to '/users/account', title: "account", identifier: :another_page do
             = fa_icon 'cog'
             Account
+          = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
+            = fa_icon 'bell'
+            Notifications
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right

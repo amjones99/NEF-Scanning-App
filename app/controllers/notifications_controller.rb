@@ -11,15 +11,24 @@ class NotificationsController < ApplicationController
 
   # GET /notifications/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /notifications/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @notification = Notification.new
   end
 
   # GET /notifications/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /notifications

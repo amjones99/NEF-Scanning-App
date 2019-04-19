@@ -15,9 +15,6 @@ describe 'Managing user' do
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user'
     click_button 'Update User'
-    fill_in 'Username', with:'user'
-    fill_in 'Password', with:'password'
-    click_button 'Log in'
     expect(page).to have_content 'user'
     click_link 'Back'
     within(:css, 'table') {expect(page).to have_content 'user'}

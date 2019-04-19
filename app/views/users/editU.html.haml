@@ -1,4 +1,19 @@
-%h1 Timetable
+%h1 Editing user
+
+= simple_form_for(@user) do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
+  .form-inputs
+    = f.input :username
+    = f.input :password
+    = f.input :institution
+    = f.input :email
+    = f.input :name
+
+  .form-actions
+    = f.button :submit
+
 #wrap
   %nav#main-nav.navbar.navbar-default.navbar-fixed-top
     .container
@@ -32,7 +47,7 @@
             Account
           = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
             = fa_icon 'bell'
-            Notifications            
+            Notifications
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right

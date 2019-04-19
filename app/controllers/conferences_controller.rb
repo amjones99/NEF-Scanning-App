@@ -11,15 +11,24 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /conferences/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @conference = Conference.new
   end
 
   # GET /conferences/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /conferences
