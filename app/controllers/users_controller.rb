@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
+  # helper_method :sort_column, :sort_direction
 
   # GET /users
   def index
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
-
-    @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+    @q = User.ransack(params[:q])
+    @users_with_attended = @q.result.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+    # @users_with_attended = User.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
   #  GET /indexU
@@ -120,11 +121,4 @@ class UsersController < ApplicationController
       params.require(:notification).permit(:not_id, :not_des, :time)
     end
 
-    def sort_column
-      User.column_names.include?(params[:sort]) ? params[:sort] : "Username"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 end
