@@ -3,8 +3,13 @@
 = search_form_for @q do |f|
   = f.label :name_cont
   = f.search_field :name_cont
+
+  -# = f.label :bookings_attended_cont
+  -# = f.search_field :bookings_attended_cont
+
   = f.submit "Search"
-  
+
+
 
 = link_to 'Reset Search', users_path
 .table-responsive
@@ -15,7 +20,7 @@
       %th Access
       %th Institution
       %th Email
-      %th sort_link(@q, :name, 'Name', default_order: :desc)
+      %th=sort_link(@q, :name, 'Name', default_order: :desc)
       %th Attended
 
   %tbody
