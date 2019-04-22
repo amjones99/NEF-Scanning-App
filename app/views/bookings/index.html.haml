@@ -25,8 +25,8 @@
         %td= booking.institution
         %td= booking.ticket_type
         %td= booking.access_req
-        %td= booking.catering
-        %td= booking.attended
+        %td= bool_to_glyph(booking.catering)
+        %td= bool_to_glyph(booking.attended)
         %td= booking.dietary_req
         %td= booking.conference_id
         %td= link_to 'Show', booking

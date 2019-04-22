@@ -17,8 +17,9 @@
 #
 
 class Booking < ApplicationRecord
-  
+
   belongs_to :user
   belongs_to :conference
 
+  validates_presence_of :user
 end

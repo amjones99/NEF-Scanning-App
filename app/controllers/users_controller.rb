@@ -7,9 +7,12 @@ class UsersController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
-    @users_with_attended = User.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
-    @q = @users_with_attended.ransack(params[:q])
+    @q = User.ransack(params[:q])
+    puts @q.result.inspect
+
+    @users_with_attended = @q.result.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
     # @users_with_attended = User.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+
   end
 
   #  GET /indexU
