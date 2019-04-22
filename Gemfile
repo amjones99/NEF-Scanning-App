@@ -20,6 +20,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 
 gem 'jquery-rails'
+gem "bootstrap-table-rails"
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'select2-rails'

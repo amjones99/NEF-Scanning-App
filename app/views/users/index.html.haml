@@ -1,15 +1,32 @@
 %h2 All users
 
+= search_form_for @q do |f|
+  -# filter name
+  = f.label :name_cont
+  = f.search_field :name_cont
+  %br
+  -# filter institution
+  = f.label :institution_cont
+  = f.search_field :institution_cont
+  %br
+  -# filter attended
+  = f.label :attended
+  = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
+  %br
+  = f.submit "Search"
+
+= link_to 'Reset Search', users_path
+
 .table-responsive
-%table.table.table-striped
+%table.table.table-striped#userstable
   %thead
     %tr
-      %th= sortable 'Username'
-      %th= sortable 'access', 'Access'
-      %th= sortable 'institution', 'Institution'
-      %th= sortable 'email', 'Email'
-      %th= sortable 'name', 'Name'
-      %th= sortable 'attended', 'Attended'
+      %th Username
+      %th Access
+      %th Institution
+      %th Email
+      %th=sort_link(@q, :name, 'Name', default_order: :desc)
+      %th Attended
 
   %tbody
     - @users_with_attended.each do |user|
@@ -19,7 +36,7 @@
         %td= user.institution
         %td= user.email
         %td= user.name
-        %td= user.bookings_attended
+        %td= bool_to_glyph(user.bookings_attended)
         %td= link_to 'Show', user
         %td= link_to 'Edit', edit_user_path(user)
         %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }

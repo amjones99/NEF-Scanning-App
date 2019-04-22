@@ -9,3 +9,4 @@
 //= require select2
 //= require select2_init
 //= require instascan.min
+//= require bootstrap-table/bootstrap-table
