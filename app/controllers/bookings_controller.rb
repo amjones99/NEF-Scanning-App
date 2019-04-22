@@ -1,16 +1,15 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
-
 
   # GET /bookings
   def index
-    @bookings = Booking.order(sort_column + " " + sort_direction)
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
+    @q = Booking.ransack(params[:q])
+    @bookings = @q.result
   end
-  
+
   # GET /bookings/1
   def show
     if current_user.access == 2
@@ -66,11 +65,4 @@ class BookingsController < ApplicationController
       params.require(:booking).permit(:booking_reference, :institution, :ticket_type, :access_req, :catering, :attended, :dietary_req, :conference_id, :user_id)
     end
 
-    def sort_column
-      Booking.column_names.include?(params[:sort]) ? params[:sort] : "booking_reference"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 end

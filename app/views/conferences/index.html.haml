@@ -1,15 +1,25 @@
 %h1 Listing conferences
 
+= search_form_for @q do |f|
+  -# filter name
+  = f.label "Conference name contains:"
+  = f.search_field :name
+
+  = f.submit "Search"
+
+= link_to 'Reset Search', conferences_url
+
+
 .table-responsive
 %table.table.table-striped
   %thead
     %tr
-      %th= sortable 'id', 'Conference'
-      %th= sortable 'days', 'Days'
-      %th= sortable 'name', 'Name'
-      %th= sortable 'location', 'Location'
-      %th= sortable 'start_date', 'Start Date'
-      %th= sortable 'end_date', 'End Date'
+      %th=sort_link(@q, :id, 'Conference', default_order: :desc)
+      %th=sort_link(@q, :days, 'Days')
+      %th=sort_link(@q, :name, 'Name')
+      %th=sort_link(@q, :location, 'Location')
+      %th=sort_link(@q, :start_date, 'Start Date')
+      %th=sort_link(@q, :end_date, 'End Date')
       %th
       %th
       %th

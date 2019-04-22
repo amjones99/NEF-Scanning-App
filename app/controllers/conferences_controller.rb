@@ -1,12 +1,13 @@
 class ConferencesController < ApplicationController
   before_action :set_conference, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
+
   # GET /conferences
   def index
-    @conferences = Conference.order(sort_column + " " + sort_direction)
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
+    @q = Conference.ransack(params[:q])
+    @conferences = @q.result
   end
 
   # GET /conferences/1
@@ -68,11 +69,4 @@ class ConferencesController < ApplicationController
       params.require(:conference).permit(:conference_id, :days, :name, :location)
     end
 
-    def sort_column
-      Conference.column_names.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-    end
 end

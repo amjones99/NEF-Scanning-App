@@ -1,18 +1,29 @@
 %h1 Listing bookings
+= search_form_for @q do |f|
+  -# filter name
+  = f.label "Username contains:"
+  = f.search_field :user_username
+
+  = f.label "Booking Ref contains:"
+  = f.search_field :booking_reference
+
+  = f.submit "Search"
+
+= link_to 'Reset Search', bookings_url
 
 .table-responsive
 %table.table.table-striped
   %thead
     %tr
-      %th= sortable 'booking_reference', 'Booking Reference'
-      %th= sortable 'user_id', 'User'
-      %th= sortable 'institution', 'Institution'
-      %th= sortable 'ticket_type', 'Ticket Type'
-      %th= sortable 'access_req', 'Access Requirements'
-      %th= sortable 'catering', 'Catering'
-      %th= sortable 'attended', 'Attended'
-      %th= sortable 'dietary_req', 'Dietary Requirements'
-      %th= sortable 'conference_id', 'Conference'
+      %th=sort_link(@q, :user_id, 'User')
+      %th=sort_link(@q, :booking_reference, 'Booking Reference')
+      %th=sort_link(@q, :institution, 'Institution')
+      %th=sort_link(@q, :ticket_type, 'Ticket Type')
+      %th=sort_link(@q, :access_req, 'Access Requirements')
+      %th=sort_link(@q, :catering, 'Catering')
+      %th=sort_link(@q, :attended, 'Attended')
+      %th=sort_link(@q, :dietary_req, 'Dietary Requirements')
+      %th=sort_link(@q, :conference_id, 'Conference')
       %th
       %th
       %th
@@ -20,8 +31,8 @@
   %tbody
     - @bookings.each do |booking|
       %tr
-        %td= booking.booking_reference
         %td= booking.user.username
+        %td= booking.booking_reference
         %td= booking.institution
         %td= booking.ticket_type
         %td= booking.access_req
