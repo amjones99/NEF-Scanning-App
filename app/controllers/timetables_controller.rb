@@ -3,20 +3,34 @@ class TimetablesController < ApplicationController
   helper_method :sort_column, :sort_direction
   # GET /timetables
   def index
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @timetables = Timetable.order(sort_column + " " + sort_direction)
   end
 
+
+
   # GET /timetables/1
   def show
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # GET /timetables/new
   def new
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
     @timetable = Timetable.new
   end
 
   # GET /timetables/1/edit
   def edit
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   # POST /timetables

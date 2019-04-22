@@ -24,13 +24,16 @@
           = navbar_link_to '/conferences/map', title: "Go to map", identifier: :another_page do
             = fa_icon 'map'
             Map
-          = navbar_link_to 'https://forms.gle/AUqrnp9MQtWyVuhf7', title: "Submit feedback", identifier: :another_page do
+          = navbar_link_to 'https://docs.google.com/forms/d/e/1FAIpQLSe0RUbVzxrtrRZl_VmA86rsWPO66EeA_1D7D3JZL8D0wb_iZA/viewform', title: "Submit feedback", identifier: :another_page do
             = fa_icon 'wpforms'
             Feedback
           = navbar_link_to '/users/account', title: "account", identifier: :another_page do
             = fa_icon 'cog'
             Account
-
+          = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
+            = fa_icon 'bell'
+            Notifications
+            
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
@@ -39,7 +42,5 @@
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  = link_to '/users/account' , method: :edit , title: "edit account information" do
-                    = fa_icon 'cog', text: 'account'
                   = link_to destroy_user_session_path, method: :delete, title: "Log out of the system" do
                     = fa_icon 'sign-out', text: 'Log out'

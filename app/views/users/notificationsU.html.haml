@@ -1,4 +1,24 @@
-%h1 Timetable
+%h3 Notifications
+.table-responsive
+%table.table.table-striped
+  %thead
+    %tr
+      %th= sortable 'not_id', 'Notification Name'
+      %th= sortable 'not_des', 'Notification Description'
+      %th= sortable 'time', 'Time'
+      %th
+      %th
+      %th
+
+  %tbody
+    - @notifications.each do |notification|
+      %tr
+        %td= notification.not_id
+        %td= notification.not_des
+        %td= notification.time
+
+%br
+
 #wrap
   %nav#main-nav.navbar.navbar-default.navbar-fixed-top
     .container
@@ -32,7 +52,7 @@
             Account
           = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
             = fa_icon 'bell'
-            Notifications            
+            Notifications
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right

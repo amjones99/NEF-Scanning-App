@@ -10,11 +10,9 @@
 %p
   %b Name:
   = current_user.name
-%p
-  %b Booking Reference:
-  = current_user.booking_reference
 
-= link_to 'Edit', edit_user_path(current_user)
+
+= link_to 'Edit', "/users/editU"
 
 #wrap
   %nav#main-nav.navbar.navbar-default.navbar-fixed-top
@@ -47,6 +45,10 @@
           = navbar_link_to '/users/account', title: "account", identifier: :another_page do
             = fa_icon 'cog'
             Account
+          = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
+            = fa_icon 'bell'
+            Notifications
+
 
         - if user_signed_in?
           %ul.nav.navbar-nav.navbar-right
@@ -56,7 +58,5 @@
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  = link_to '/users/account' , method: :edit , title: "edit account information" do
-                    = fa_icon 'cog', text: 'account'
                   = link_to destroy_user_session_path, method: :delete, title: "Log out of the system" do
                     = fa_icon 'sign-out', text: 'Log out'

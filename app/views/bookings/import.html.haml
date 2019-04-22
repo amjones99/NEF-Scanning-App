@@ -1,1 +1,18 @@
 %h1 Import
+
+
+= form_tag import_bookings_path, multipart: true do
+ = file_field_tag :file
+ = submit_tag "Import"
+
+-# %table
+-#   %thead
+-#     - @csv_table.headers.each do |header|
+-#     %tr
+-#       %th= header
+-#   %tbody
+-#     -csv_table.each do |row|
+-#     %tr
+-#     -row.each do |element|
+-#       %td = element[1]
+-# %br

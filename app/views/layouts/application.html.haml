@@ -53,9 +53,12 @@
               = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
                 = fa_icon 'plus-square'
                 Add User
-              = navbar_link_to '/notifications/new', title: "Create notifications", identifier: :another_page do
+              = navbar_link_to '/notifications', title: "Create notifications", identifier: :another_page do
                 = fa_icon 'bell'
                 Notifications
+              = navbar_link_to '/timetables', title: "Timetables", identifier: :another_page do
+                = fa_icon 'table'
+                Timetables
               = navbar_link_to :users, title: "See participants", identifier: :another_page do
                 = fa_icon 'search'
                 Participants

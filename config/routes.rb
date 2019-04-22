@@ -10,19 +10,20 @@ Rails.application.routes.draw do
     get :timetable, on: :collection
   end
   resources :users do
+    collection {post :import}
+    get :import, on: :collection
     get :indexU, on: :collection
+    get :editU, on: :collection
     get :badge, on: :collection
     get :account, on: :collection
+    get :notificationsU, on: :collection
+
   end
   resources :scans do
     get :qrU, on: :collection
   end
   resources :bookings do
     get :existing, on: :collection
-    get :importing, on: :collection
-    collection do
-      post 'import'
-    end
   end
   resources :pages do
     get :home, on: :collection

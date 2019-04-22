@@ -1,24 +1,19 @@
 class ScansController < ApplicationController
   def index
+      if current_user.access == 2
+        redirect_to "/users/indexU"
+      end
   end
 
   def scan
+    if current_user.access == 2
+      redirect_to "/users/indexU"
+    end
   end
 
   def home
     @bookings = Booking.all
   end
 
-
-
-
-
-  def qrU
-    @bookings = Booking.all
-  end
-
-  def show
-    @booking = Booking.find(params[:id])
-  end
 
 end

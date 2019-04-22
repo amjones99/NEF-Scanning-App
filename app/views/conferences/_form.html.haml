@@ -4,7 +4,6 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :days, label: 'Days'
     = f.input :days, label: 'Number of Days'
     = f.input :name, label: 'Conference name'
     = f.input :location, label: 'Conference location'
