@@ -32,7 +32,7 @@
           %p Please enable JavaScript or use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.
 
     #wrap
-      %nav#main-nav.navbar.navbar-default.navbar-fixed-top
+      %nav#main-nav.navbar.navbar-default.navbar-fixed-top.shadow-sm
         .container
           .navbar-header
             %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
@@ -40,36 +40,60 @@
               %span.icon-bar
               %span.icon-bar
             = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
+              = image_tag "/qr-code.png", width: 40
               NEF Scanning App
 
           .collapse.navbar-collapse
-            %ul.nav.navbar-nav
-              = navbar_link_to :root, title: "Go to the home page", identifier: :home do
-                = fa_icon 'home'
-                Home
-              = navbar_link_to '/scans#index', title: "Scan", identifier: :add do
-                = fa_icon 'camera'
-                Scan
-              = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
-                = fa_icon 'plus-square'
-                Add User
-              = navbar_link_to '/notifications', title: "Create notifications", identifier: :another_page do
-                = fa_icon 'bell'
-                Notifications
-              = navbar_link_to '/timetables', title: "Timetables", identifier: :another_page do
-                = fa_icon 'table'
-                Timetables
-              = navbar_link_to :users, title: "See participants", identifier: :another_page do
-                = fa_icon 'search'
-                Participants
-              = navbar_link_to :conferences, title: "Conferences", identifier: :another_page do
-                = fa_icon 'group'
-                Conferences
-              = navbar_link_to :bookings, title: "Bookings", identifier: :another_page do
-                = fa_icon 'book'
-                Bookings
-
-            - if user_signed_in?
+            - if user_signed_in? 
+              - if current_user.access == 1
+                %ul.nav.navbar-nav
+                  = navbar_link_to :root, title: "Go to the home page", identifier: :home do
+                    = fa_icon 'home'
+                    Home
+                  = navbar_link_to '/scans#index', title: "Scan", identifier: :add do
+                    = fa_icon 'camera'
+                    Scan
+                  = navbar_link_to :new_user, title: "Add a new participant", identifier: :another_page do
+                    = fa_icon 'plus-square'
+                    Add User
+                  = navbar_link_to '/notifications', title: "Create notifications", identifier: :another_page do
+                    = fa_icon 'bell'
+                    Notifications
+                  = navbar_link_to '/timetables', title: "Timetables", identifier: :another_page do
+                    = fa_icon 'table'
+                    Timetables
+                  = navbar_link_to :users, title: "See participants", identifier: :another_page do
+                    = fa_icon 'search'
+                    Participants
+                  = navbar_link_to :conferences, title: "Conferences", identifier: :another_page do
+                    = fa_icon 'group'
+                    Conferences
+                  = navbar_link_to :bookings, title: "Bookings", identifier: :another_page do
+                    = fa_icon 'book'
+                    Bookings
+              - else
+                %ul.nav.navbar-nav
+                  = navbar_link_to '/users/indexU', title: "Go to the home page", identifier: :home do
+                    = fa_icon 'home'
+                    Home
+                  = navbar_link_to '/users/badge', title: "Badge", identifier: :another_page do
+                    = fa_icon 'id-badge'
+                    Badge
+                  = navbar_link_to '/timetables/timetable', title: "Go to TimeTable", identifier: :another_page do
+                    = fa_icon 'calendar'
+                    Timetable
+                  = navbar_link_to '/conferences/map', title: "Go to map", identifier: :another_page do
+                    = fa_icon 'map'
+                    Map
+                  = navbar_link_to 'https://docs.google.com/forms/d/e/1FAIpQLSe0RUbVzxrtrRZl_VmA86rsWPO66EeA_1D7D3JZL8D0wb_iZA/viewform', title: "Submit feedback", identifier: :another_page do
+                    = fa_icon 'wpforms'
+                    Feedback
+                  = navbar_link_to '/users/account', title: "account", identifier: :another_page do
+                    = fa_icon 'cog'
+                    Account
+                  = navbar_link_to '/users/notificationsU', title: "Notifications", identifier: :another_page do
+                    = fa_icon 'bell'
+                    Notifications
               %ul.nav.navbar-nav.navbar-right
                 %li.dropdown
                   = link_to '#', data: { toggle: :dropdown }, class: 'dropdown-toggle', role: 'button', 'aria-haspopup' => true, 'aria-expanded' => false do

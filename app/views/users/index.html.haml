@@ -1,20 +1,23 @@
 %h2 All users
 
-= search_form_for @q do |f|
-  -# filter name
-  = f.label :name_cont
-  = f.search_field :name_cont
-  %br
-  -# filter institution
-  = f.label :institution_cont
-  = f.search_field :institution_cont
-  %br
-  -# filter attended
-  = f.label :attended
-  = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
-  %br
-  = f.submit "Search"
+= search_form_for(@q) do |f|
+  .form-row
+    .col.form-group 
+      -# filter name
+      = f.label :name_cont
+      = f.search_field :name_cont, class: 'form-control'
+    .col.form-group
+      -# filter institution
+      = f.label :institution_cont
+      = f.search_field :institution_cont, class: 'form-control'
+  .form-group
+    -# filter attended
+    = f.label :attended
+    = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
+  .form-actions
+    = f.submit "Search", class: 'btn btn-primary'
 
+%br
 = link_to 'Reset Search', users_path
 
 .table-responsive
