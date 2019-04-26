@@ -16,10 +16,9 @@
     = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
   .form-actions
     = f.submit "Search", class: 'btn btn-primary'
+    = link_to 'Reset Search', users_path
 
 %br
-= link_to 'Reset Search', users_path
-
 .table-responsive
 %table.table.table-striped#userstable
   %thead
@@ -40,15 +39,17 @@
         %td= user.email
         %td= user.name
         %td= bool_to_glyph(user.bookings_attended)
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.dropdown
+          %btn.btn.btn-secondary.dropdown-toggle
+            Options
+          .dropdown-content
+            = link_to 'Show', user, class: 'dropdown-item'
+            = link_to 'Edit', edit_user_path(user), class: 'dropdown-item'
+            = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
 
-%br
 
+= link_to 'New User', new_user_path, class: 'btn btn-primary btn-new-user'
 
-= link_to 'New User', new_user_path
-
-= form_tag import_users_path, multipart: true do
-  = file_field_tag :file
-  = submit_tag "Import"
+-# = form_tag import_users_path, multipart: true do
+-#   = file_field_tag :file
+-#   = submit_tag "Import"
