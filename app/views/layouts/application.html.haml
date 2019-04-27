@@ -32,19 +32,19 @@
           %p Please enable JavaScript or use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.
 
     #wrap
-      %nav#main-nav.navbar.navbar-default.navbar-fixed-top.shadow-sm
-        .container
-          .navbar-header
-            %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
-              = image_tag "/qr-code.png", width: 40
-              NEF Scanning App
+      - if user_signed_in? 
+        %nav#main-nav.navbar.navbar-default.navbar-fixed-top.shadow-sm
+          .container
+            .navbar-header
+              %button.navbar-toggle{ data: { target: ".navbar-collapse", toggle: :collapse, type: :button } }
+                %span.icon-bar
+                %span.icon-bar
+                %span.icon-bar
+              = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
+                = image_tag "/qr-code.png", width: 40
+                NEF Scanning App
 
-          .collapse.navbar-collapse
-            - if user_signed_in? 
+            .collapse.navbar-collapse
               - if current_user.access == 1
                 %ul.nav.navbar-nav
                   = navbar_link_to :root, title: "Go to the home page", identifier: :home do

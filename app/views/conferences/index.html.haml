@@ -1,14 +1,23 @@
 %h1 Listing conferences
 
+-# = search_form_for @q do |f|
+-#   -# filter name
+-#   = f.label "Conference name contains:"
+-#   = f.search_field :name
+
+-#   = f.submit "Search"
+
+-# = link_to 'Reset Search', conferences_url
+
 = search_form_for @q do |f|
   -# filter name
-  = f.label "Conference name contains:"
-  = f.search_field :name
-
-  = f.submit "Search"
-
-= link_to 'Reset Search', conferences_url
-
+  .form-row
+    .col.form-group
+      = f.search_field :name, class: 'form-control', placeholder: 'Conference name contains:'
+    .col.form-group
+      .form-actions
+        = f.submit "Search", class: 'btn btn-primary'
+        = link_to 'Reset Search', conferences_url
 
 .table-responsive
 %table.table.table-striped
@@ -21,8 +30,6 @@
       %th=sort_link(@q, :start_date, 'Start Date')
       %th=sort_link(@q, :end_date, 'End Date')
       %th
-      %th
-      %th
 
   %tbody
     - @conferences.each do |conference|
@@ -33,10 +40,14 @@
         %td= conference.location
         %td= conference.start_date
         %td= conference.end_date
-        %td= link_to 'Show', conference
-        %td= link_to 'Edit', edit_conference_path(conference)
-        %td= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }
-
+        %td.dropdown
+          %btn.btn.btn-secondary.dropdown-toggle
+            Options
+          .dropdown-content
+            = link_to 'Show', conference, class: 'dropdown-item'
+            = link_to 'Edit', edit_conference_path(conference), class: 'dropdown-item'
+            = link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
+       
 %br
 
-= link_to 'New Conference', new_conference_path
+= link_to 'New Conference', new_conference_path,  class: 'btn btn-primary btn-new-user'

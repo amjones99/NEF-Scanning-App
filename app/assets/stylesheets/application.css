@@ -81,3 +81,8 @@
 .btn-new-user {
   margin-bottom: 20px;
 }
+
+.logo {
+  position: inherit;
+  left: 25%;
+}

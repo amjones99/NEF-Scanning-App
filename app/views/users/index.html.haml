@@ -4,12 +4,11 @@
   .form-row
     .col.form-group 
       -# filter name
-      = f.label :name_cont
-      = f.search_field :name_cont, class: 'form-control'
+      -# = f.label :name_cont
+      = f.search_field :name_cont, class: 'form-control', placeholder: 'Name Contains:'
     .col.form-group
       -# filter institution
-      = f.label :institution_cont
-      = f.search_field :institution_cont, class: 'form-control'
+      = f.search_field :institution_cont, class: 'form-control', placeholder: 'Institution Contains: '
   .form-group
     -# filter attended
     = f.label :attended
@@ -29,7 +28,7 @@
       %th Email
       %th=sort_link(@q, :name, 'Name', default_order: :desc)
       %th Attended
-
+      %th
   %tbody
     - @users_with_attended.each do |user|
       %tr
