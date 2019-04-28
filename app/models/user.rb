@@ -34,7 +34,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :validatable
   has_many :booking
   validates :username, :password, :access, :email, :name, presence: true, on: new
-  validates :access, numericality: { less_than: 4}
+  #validates :username, :password , :confirmation => true, :length =>{:within => 6..40}, on: new
+  #validates :username, :password , :confirmation => true, :length =>{:within => 6..40}, on: edit
+  validates :access, numericality: { less_than: 3}
   validates :access, numericality: { greater_than: 0}
 
 
@@ -61,10 +63,12 @@ class User < ApplicationRecord
     new_user.name = b["Name"]
     new_user.email = b["Email"]
     # hard coded username. this is where we need to generate it automatically.
-    new_user.username = UserGen(b["Name"],b["Email"])
+    # new_user.username = UserGen(b["Name"],b["Email"])
+    pw = SecureRandom.hex(8)
+    new_user.username = pw
     new_user.access = 2
     # hard coded password. this is where we need to generate it automatically.
-    new_user.password = 123456
+    new_user.password = pw
     new_user.institution = b["Organisation"]
     new_user.save!
 
