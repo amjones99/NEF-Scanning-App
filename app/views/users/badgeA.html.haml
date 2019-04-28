@@ -1,0 +1,13 @@
+%h1 Badge
+%p
+  %b Name:
+  = current_user.name
+%p
+  %b Institute:
+  = current_user.institution
+%p
+  %b User Type:
+  -if current_user.access == 1
+    ="Admin"
+  -else
+    ="User"

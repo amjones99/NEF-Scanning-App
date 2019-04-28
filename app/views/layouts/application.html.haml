@@ -40,7 +40,7 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-              = link_to '/pages/home', class: 'navbar-brand hidden-sm' do
+              = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
                 = image_tag "/qr-code.png", width: 40
                 NEF Scanning App
 
@@ -50,6 +50,9 @@
                   = navbar_link_to :root, title: "Go to the home page", identifier: :home do
                     = fa_icon 'home'
                     Home
+                  = navbar_link_to '/users/badgeA', title: "Badge", identifier: :another_page do
+                    = fa_icon 'id-badge'
+                    Badge
                   = navbar_link_to '/scans#index', title: "Scan", identifier: :add do
                     = fa_icon 'camera'
                     Scan
@@ -82,7 +85,7 @@
                   = navbar_link_to '/timetables/timetable', title: "Go to TimeTable", identifier: :another_page do
                     = fa_icon 'calendar'
                     Timetable
-                  = navbar_link_to '/conferences/map', title: "Go to map", identifier: :another_page do
+                  = navbar_link_to 'https://bit.ly/2IKIwqh', title: "Go to map", identifier: :another_page do
                     = fa_icon 'map'
                     Map
                   = navbar_link_to 'https://docs.google.com/forms/d/e/1FAIpQLSe0RUbVzxrtrRZl_VmA86rsWPO66EeA_1D7D3JZL8D0wb_iZA/viewform', title: "Submit feedback", identifier: :another_page do
