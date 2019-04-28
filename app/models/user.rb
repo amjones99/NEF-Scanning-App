@@ -75,6 +75,7 @@ class User < ApplicationRecord
     new_user.institution = b["Organisation"]
     new_user.temp_pw = pw
     new_user.save!
+    UserMailer.welcome_email(new_user).deliver
 
     new_booking = Booking.new
     new_booking.institution = b["Organisation"]

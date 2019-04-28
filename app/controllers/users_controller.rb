@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       puts 'Mems'
-      # UserMailer.welcome_email(@user).deliver
+      UserMailer.welcome_email(@user).deliver
       redirect_to @user, notice: 'User was successfully created.'
       @user.temp_pw == ""
     else
