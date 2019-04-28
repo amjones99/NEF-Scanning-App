@@ -1,8 +1,14 @@
+%br
 %h2 All users
+
+= form_tag import_users_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import"
+%br
 
 = search_form_for(@q) do |f|
   .form-row
-    .col.form-group 
+    .col.form-group
       -# filter name
       -# = f.label :name_cont
       = f.search_field :name_cont, class: 'form-control', placeholder: 'Name Contains:'
@@ -48,7 +54,3 @@
 
 
 = link_to 'New User', new_user_path, class: 'btn btn-primary btn-new-user'
-
--# = form_tag import_users_path, multipart: true do
--#   = file_field_tag :file
--#   = submit_tag "Import"
