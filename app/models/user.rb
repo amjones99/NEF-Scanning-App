@@ -66,11 +66,10 @@ class User < ApplicationRecord
     new_user.name = b["Name"]
     new_user.email = b["Email"]
     # hard coded username. this is where we need to generate it automatically.
-    # new_user.username = UserGen(b["Name"],b["Email"])
-    pw = SecureRandom.hex(8)
-    new_user.username = pw
+    new_user.username = UserGen(b["Name"],b["Email"])
     new_user.access = 2
     # hard coded password. this is where we need to generate it automatically.
+    pw = SecureRandom.hex(8)
     new_user.password = pw
     new_user.institution = b["Organisation"]
     new_user.save!
