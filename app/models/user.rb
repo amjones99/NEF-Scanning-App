@@ -73,6 +73,7 @@ class User < ApplicationRecord
     pw = SecureRandom.hex(8)
     new_user.password = pw
     new_user.institution = b["Organisation"]
+    new_user.temp_pw = pw
     new_user.save!
 
     new_booking = Booking.new
