@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
-
     @users_with_attended = User.order(sort_column + " " + sort_direction).left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
   end
 
