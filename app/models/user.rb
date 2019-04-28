@@ -41,12 +41,12 @@ class User < ApplicationRecord
 
   def self.UserGen(name, email)
     emailName = email.split("@").first
-    usrnm = emailName + name.first + name.last
-    @usersomething = User.where("username ~ ?", usrnm + '%')
+    @usrnm = emailName.to_s + name.first.to_s + name.last.to_s
+    @usersomething = User.where("username ~* ?", @usrnm)
     if (@usersomething.length != 0)
-      return usrnm + @usersomething.length.to_s
+      return @usrnm + @usersomething.length.to_s
     else
-      return usrnm
+      return @usrnm
     end
   end
 
