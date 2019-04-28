@@ -1,14 +1,10 @@
-!!!
-%html
-  %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %h1
-      Welcome to example.com, #{@user.name}
-    %p
-      You have successfully signed up to example.com,
-      your username is: #{@user.login}.
-      %br/
-    %p
-      To login to the site, just follow this link: #{@url}.
-    %p Thanks for joining and have a great day!
+%h1
+  Welcome to the NEF Scanning App, #{@user.name}
+%p
+  You have successfully signed up,
+  Your Username is: #{@user.username}
+  Your Temporary Password is : #{@user.password}
+  %br/
+%p
+  To login to the site, just follow this link: #{@url}.
+%p Thanks for joining and have a great day!

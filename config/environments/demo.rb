@@ -1,11 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: "app_url" }
-  config.action_mailer.asset_host          = "https://app_url"
+  config.action_mailer.default_url_options = { host: "team31.demo4.hut.shefcompsci.org.uk" }
+  config.action_mailer.asset_host          = "https://team31.demo4.hut.shefcompsci.org.uk"
   config.action_mailer.smtp_settings = {
     address: 'mailhost.shef.ac.uk',
     port:    25,
-    domain:  'app_url',
+    domain:  'team31.demo4.hut.shefcompsci.org.uk',
     enable_starttls_auto: false
   }
 
