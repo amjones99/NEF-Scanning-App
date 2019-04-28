@@ -87,7 +87,7 @@ class User < ApplicationRecord
     new_booking.attended = false
     new_booking.user_id = new_user.id
     # check Easter Week 2 for issue about conference ID pls.
-    new_booking.conference_id = 1
+    new_booking.conference_id = 2
     new_booking.save!
 
     UserMailer.welcome_email(new_user).deliver
