@@ -1,39 +1,52 @@
 %h1 Listing bookings
 
+= search_form_for(@q) do |f|
+  .form-row
+    .col.form-group 
+      -# filter name
+      = f.search_field :user_username, class: 'form-control', placeholder: 'Username contains:'
+    .col.form-group
+      -# filter institution
+      = f.search_field :booking_reference, class: 'form-control', placeholder: 'Booking Ref contains:'
+  .form-actions
+    = f.submit "Search", class: 'btn btn-primary'
+    = link_to 'Reset Search', bookings_url
+
 .table-responsive
 %table.table.table-striped
   %thead
     %tr
-      %th= sortable 'booking_reference', 'Booking Reference'
-      %th= sortable 'user_id', 'User'
-      %th= sortable 'institution', 'Institution'
-      %th= sortable 'ticket_type', 'Ticket Type'
-      %th= sortable 'access_req', 'Access Requirements'
-      %th= sortable 'catering', 'Catering'
-      %th= sortable 'attended', 'Attended'
-      %th= sortable 'dietary_req', 'Dietary Requirements'
-      %th= sortable 'conference_id', 'Conference'
-      %th
-      %th
+      %th=sort_link(@q, :user_id, 'User')
+      %th=sort_link(@q, :booking_reference, 'Booking Reference')
+      %th=sort_link(@q, :institution, 'Institution')
+      %th=sort_link(@q, :ticket_type, 'Ticket Type')
+      %th=sort_link(@q, :access_req, 'Access Requirements')
+      %th=sort_link(@q, :catering, 'Catering')
+      %th=sort_link(@q, :attended, 'Attended')
+      %th=sort_link(@q, :dietary_req, 'Dietary Requirements')
+      %th=sort_link(@q, :conference_id, 'Conference')
       %th
 
   %tbody
     - @bookings.each do |booking|
       %tr
-        %td= booking.booking_reference
         %td= booking.user.username
+        %td= booking.booking_reference
         %td= booking.institution
         %td= booking.ticket_type
         %td= booking.access_req
-        %td= booking.catering
-        %td= booking.attended
+        %td= bool_to_glyph(booking.catering)
+        %td= bool_to_glyph(booking.attended)
         %td= booking.dietary_req
         %td= booking.conference_id
-        %td= link_to 'Show', booking
-        %td= link_to 'Edit', edit_booking_path(booking)
-        %td= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }
+        %td.dropdown
+          %btn.btn.btn-secondary.dropdown-toggle
+            Options
+          .dropdown-content
+            = link_to 'Show', booking, class: 'dropdown-item'
+            = link_to 'Edit', edit_booking_path(booking), class: 'dropdown-item'
+            = link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
 
 
 
-
-= link_to 'New Booking', new_booking_path
+= link_to 'New Booking', new_booking_path, class: 'btn btn-primary btn-new-user'
