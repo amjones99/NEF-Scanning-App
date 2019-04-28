@@ -32,7 +32,7 @@
           %p Please enable JavaScript or use a different web browser, or alternatively contact the CiCS Helpdesk for assistance.
 
     #wrap
-      - if user_signed_in? 
+      - if user_signed_in?
         %nav#main-nav.navbar.navbar-default.navbar-fixed-top.shadow-sm
           .container
             .navbar-header
@@ -40,7 +40,7 @@
                 %span.icon-bar
                 %span.icon-bar
                 %span.icon-bar
-              = link_to 'pages/home', class: 'navbar-brand hidden-sm' do
+              = link_to '/pages/home', class: 'navbar-brand hidden-sm' do
                 = image_tag "/qr-code.png", width: 40
                 NEF Scanning App
 
