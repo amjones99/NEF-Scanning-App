@@ -75,7 +75,7 @@ class User < ApplicationRecord
     new_user.institution = b["Organisation"]
     new_user.temp_pw = pw
     new_user.save!
-    UserMailer.welcome_email(new_user).deliver
+
 
     new_booking = Booking.new
     new_booking.institution = b["Organisation"]
@@ -89,6 +89,8 @@ class User < ApplicationRecord
     # check Easter Week 2 for issue about conference ID pls.
     new_booking.conference_id = 1
     new_booking.save!
+
+    UserMailer.welcome_email(new_user).deliver
     end
     return true
   end
