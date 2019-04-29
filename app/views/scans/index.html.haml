@@ -8,7 +8,7 @@
     scanner.addListener('scan', function (content) {
        console.log(content);
        console.log(`${window.location.host}/bookings/${content}`)
-       // window.alert("User scanned in successfully");
+       window.alert("User scanned in successfully");
       $.ajax({
         method: "PUT",
         url: `/bookings/${content}`,
