@@ -1,26 +1,28 @@
 %head
   %title Instascan
-  %script{src: "instascan.min.js", type: "text/javascript"}
+  -# %script{src: "instascan.min.js", type: "text/javascript"}
 %body
   %video#preview
   :javascript
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
     scanner.addListener('scan', function (content) {
        console.log(content);
+       console.log(`${window.location.host}/bookings/${content}`)
        // window.alert("User scanned in successfully");
-      // $.ajax({
-      //   method: "POST",
-      //   url: `/bookings/${content}`,
-      //   data: {'booking[attended]': [1]},
-      //   // dataType: dataType
-      // });
-      $.post(`/bookings/${content}`,
-      {
-        'booking[attended]': [0,1]
-      },
-      function(data, status) {
-        alert("Data: " + data + "\nStatus: " + status);
-      })
+      $.ajax({
+        method: "PUT",
+        url: `/bookings/${content}`,
+        data: {'booking[attended]': 1},
+        dataType: "html",
+        // dataType: dataType
+      });
+      // $.post(`/bookings/${content}`,
+      // {
+      //   'booking[attended]': 1
+      // },
+      // function(data, status) {
+      //   alert("Data: " + data + "\nStatus: " + status);
+      // })
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
