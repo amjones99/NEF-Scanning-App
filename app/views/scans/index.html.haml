@@ -7,18 +7,20 @@
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
     scanner.addListener('scan', function (content) {
        console.log(content);
-       window.alert("User scanned in successfully");
-       var bookingref = content;
-      $.ajax({
-        type: "POST",
-        method: "PATCH",
-        url: `/bookings/${bookingref}`,
-        data: {'booking[attended]': 1},
-        success: function() {
-          console.log('...');
-        },
-        // dataType: dataType
-      });
+       // window.alert("User scanned in successfully");
+      // $.ajax({
+      //   method: "POST",
+      //   url: `/bookings/${content}`,
+      //   data: {'booking[attended]': [1]},
+      //   // dataType: dataType
+      // });
+      $.post(`/bookings/${content}`,
+      {
+        'booking[attended]': [0,1]
+      },
+      function(data, status) {
+        alert("Data: " + data + "\nStatus: " + status);
+      })
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {
