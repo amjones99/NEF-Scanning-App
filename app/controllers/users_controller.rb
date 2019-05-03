@@ -41,9 +41,7 @@ class UsersController < ApplicationController
 
   # GET /badge
   def badge
-    if current_user.access == 1
-      redirect_to "/users/"
-    end
+  
     @bookingUserID = Booking.where(user_id: current_user.id)
   end
 

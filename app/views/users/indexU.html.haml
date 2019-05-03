@@ -8,7 +8,7 @@
 
 
 - @bookingUserID.each do |b|
- %b conference_id:
+ %b Conference:
  - Conference.where(id: b.conference_id).each do |c|
   = c.name
   %br

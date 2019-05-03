@@ -1,19 +1,19 @@
-.card
-  %p.days
-    - @bookingUserID.each do |b|
+- @bookingUserID.each do |b|
+  .card
+    %p.days
       - case b.ticket_type
       - when 1
         = "Day 1"
-      -when 2
+      - when 2
         = "Day 2"
       -when 3
         = "Both days"
-  %h1{style: 'margin: 0 auto'}
-    = current_user.name
-  %h3{style: 'margin: 10px auto 20px'}
-    = current_user.institution
+    %h1{style: 'margin: 0 auto'}
+      = current_user.name
+    %h3{style: 'margin: 10px auto 20px'}
+      = current_user.institution
 
-  %img{src: '/badge-temp.png', class: "card-img"}
+    %img{src: '/badge-temp.png', class: "card-img"}
 
 %br
 
