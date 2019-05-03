@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get :account, on: :collection
     get :notificationsU, on: :collection
     get :badgeA, on: :collection
+    get :coa, on: :collection
   end
   resources :scans do
     get :qrU, on: :collection

@@ -37,8 +37,8 @@ class User < ApplicationRecord
   validates_length_of    :password, :within => Devise.password_length
   validates_uniqueness_of    :username,     :case_sensitive => true
   has_many :booking
-  validates :username, :password, :access, :email, :name, presence: true, on: new
-  #validates :username, :password , :confirmation => true, :length =>{:within => 6..40}, on: new
+  validates :username, :password, :access, :email, :name, presence: true, on: :crete
+  validates :username, :password , :confirmation => true, :length =>{:within => 6..40}
   #validates :username, :password , :confirmation => true, :length =>{:within => 6..40}, on: edit
   validates :access, numericality: { less_than: 3}
   validates :access, numericality: { greater_than: 0}
