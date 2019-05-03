@@ -3,7 +3,14 @@
 %h3 welcome
 = current_user.name
 %h3 QR codes
+
+
+
+
 - @bookingUserID.each do |b|
+ %b conference_id:
+ - Conference.where(id: b.conference_id).each do |c|
+  = c.name
   %br
-  %img{src: generate_qr(b.id.to_s), class: "qr-code"}
-%h3 Booked conferences
+ %img{src: generate_qr(b.booking_reference), class: "qr-code"}
+ %br

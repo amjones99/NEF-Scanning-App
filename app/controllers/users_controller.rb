@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     end
     @q = User.ransack(params[:q])
     @users_with_attended = @q.result.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
-
   end
 
   #  GET /indexU
@@ -45,6 +44,7 @@ class UsersController < ApplicationController
     if current_user.access == 1
       redirect_to "/users/"
     end
+    @bookingUserID = Booking.where(user_id: current_user.id)
   end
 
   # GET /users/1

@@ -11,6 +11,7 @@
   *= require environment_notice
   *= require users
   *= require bootstrap-table/bootstrap-table
+  *= requre borders
 */
 
 .navbar-brand {
