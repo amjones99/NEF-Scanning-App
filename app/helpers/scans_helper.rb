@@ -8,8 +8,8 @@ module ScansHelper
   if text == nil
     return
   else
-  barcode = Barby::QrCode.new(text, level: :q, size: 9)
-  base64_output = Base64.encode64(barcode.to_png({ xdim: 9 }))
+  barcode = Barby::QrCode.new(text, level: :q, size: 4)
+  base64_output = Base64.encode64(barcode.to_png({ xdim: 4 }))
   "data:image/png;base64,#{base64_output}"
   end
 end

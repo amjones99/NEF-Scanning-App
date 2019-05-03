@@ -7,11 +7,11 @@
   %tbody
     - @bookings.each do |b|
       %tr
-        %td= b.booking_reference
+        %td= b.id.to_s
 
 %br
 
 - @bookings.each do |b|
-  %img{src: generate_qr(b.booking_reference), class: "qr-code"}
+  %img{src: generate_qr(b.id.to_s), class: "qr-code"}
 
 = link_to 'Back', scans_path
