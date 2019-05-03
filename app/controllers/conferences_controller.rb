@@ -66,7 +66,7 @@ class ConferencesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def conference_params
-      params.require(:conference).permit(:conference_id, :days, :name, :location)
+      params.require(:conference).permit(:conference_id, :days, :name, :location,:start_date,:end_date)
     end
 
 end
