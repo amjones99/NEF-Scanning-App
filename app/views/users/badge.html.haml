@@ -1,16 +1,20 @@
-%h1 Badge
-%p
-  %b Name:
-  = current_user.name
-%p
-  %b institute:
-  = current_user.institution
+.card
+  %p.days
+    - @bookingUserID.each do |b|
+      - case b.ticket_type
+      - when 1
+        = "Day 1"
+      -when 2
+        = "Day 2"
+      -when 3
+        = "Both days"
+  %h1{style: 'margin: 0 auto'}
+    = current_user.name
+  %h3{style: 'margin: 10px auto 20px'}
+    = current_user.institution
 
-%p
-  %b User Type:
-  -if current_user.access == 1
-    ="Admin"
-  -else
-    ="User"
+  %img{src: '/badge-temp.png', class: "card-img"}
+
+%br
 
 <a onclick='window.print(); return false;' class='btn btn-primary'>Print</a>
