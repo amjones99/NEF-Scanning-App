@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   # GET /badge
   def badge
-  
+
     @bookingUserID = Booking.where(user_id: current_user.id)
   end
 
@@ -70,6 +70,9 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
+    pw = SecureRandom.hex(8)
+    @user.password = pw
+    @user.temp_pw = pw
     if @user.save
       UserMailer.welcome_email(@user).deliver
       redirect_to @user, notice: 'User was successfully created.'
