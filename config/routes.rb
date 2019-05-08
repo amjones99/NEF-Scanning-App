@@ -37,10 +37,8 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
+  
   get 'scans/index'
-  get 'scans/scan'
-  get 'scans/qrU'
-  get 'scans/show/:id', to: 'scans#show'
 
   root to: "users#indexU"
 
