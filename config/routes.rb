@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :conferences do
     get :map, on: :collection
   end
-  resources :timetables 
+  resources :timetables
   resources :users do
     collection {post :import}
     get :import, on: :collection
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get :notificationsU, on: :collection
     get :badgeA, on: :collection
     get :coa, on: :collection
+    get :changepw, on: :collection
   end
   resources :scans do
     get :qrU, on: :collection
