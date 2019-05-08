@@ -39,6 +39,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def changepw
+    @user = current_user
+  end
+
   # GET /badge
   def badge
 
