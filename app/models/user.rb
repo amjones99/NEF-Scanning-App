@@ -60,7 +60,7 @@ class User < ApplicationRecord
   def self.import(file)
     csv = CSV.read(file.path, headers: true, skip_blanks: true)
     CSV.foreach(file.path, headers: true, skip_blanks: true) do |b|
-    csv_valid = (['Name','Organisation','Email','Dietary Requirements', 'Access Requirements', 'IOP Competition', 'Registration Type',	'Registration Route', 'Early/Standard/Late',	'Income', 'Online Store Ref/ITO', 'Conference ID'] - csv.headers.compact).empty?
+    csv_valid = (['Name','Organisation','Email','Dietary Requirements', 'Access Requirements', 'Catering', 'Number of Days', 'Online Store Ref/ITO'] - csv.headers.compact).empty?
     return false unless csv_valid
 
     new_user = User.new
@@ -82,8 +82,13 @@ class User < ApplicationRecord
     new_booking.dietary_req = b["Dietary Requirements"]
     new_booking.access_req = b["Access Requirements"]
     new_booking.booking_reference = b["Online Store Ref/ITO"]
-    new_booking.ticket_type = 1
-    new_booking.catering = false
+    new_booking.ticket_type = b["Number of Days"]
+    catering = b["Catering"]
+    if catering == "Yes" || catering == "yes"
+      new_booking.catering = true
+    else
+      new_booking.catering = false
+    end
     new_booking.attended = false
     new_booking.user_id = new_user.id
     # check Easter Week 2 for issue about conference ID pls.
