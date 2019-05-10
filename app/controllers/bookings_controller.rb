@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
       redirect_to "/users/indexU"
     end
     @q = Booking.ransack(params[:q])
+    @q.sorts = 'attended asc' if @q.sorts.empty?
     @bookings = @q.result
   end
 
@@ -42,11 +43,19 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   def update
     if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking was successfully updated.'
+      redirect_to bookings_url, notice: 'Booking was successfully updated.'
     else
       render :edit
     end
   end
+
+  # def toggle_attended
+  #   if @booking.toggle!(:attended)
+  #     respond_to do |format|
+  #       format.js
+  #       format.html {render action: "index", notice: "Booking was successfully update"}
+  #   end
+  # end
 
   # DELETE /bookings/1
   def destroy

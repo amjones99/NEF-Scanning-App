@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # helper_method :sort_column, :sort_direction
 
@@ -8,7 +8,13 @@ class UsersController < ApplicationController
       redirect_to "/users/indexU"
     end
     @q = User.ransack(params[:q])
-    @users_with_attended = @q.result.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended')
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @users_with_attended = @q.result.left_outer_joins(:booking).distinct.select('users.*,bookings.attended AS bookings_attended, bookings.booking_reference AS bookings_reference')
+    #PATCH/PUT toggle Attended
+    # def toggle_attended
+    #   @booking  =  Booking.where(user_id: @user.id)
+    #   @booking.toggle!(:attended)
+    # end
   end
 
   #  GET /indexU
@@ -69,6 +75,7 @@ class UsersController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
+    @booking  =  Booking.where(user_id: @user.id)
   end
 
   # POST /users
