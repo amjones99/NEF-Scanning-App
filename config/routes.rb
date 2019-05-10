@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   end
   resources :bookings do
     member do
-      put :toggle_certificate
+      put :request_certificate
+      put :cancel_certificate
     end
     get :existing, on: :collection
 

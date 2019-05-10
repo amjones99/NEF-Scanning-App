@@ -43,7 +43,7 @@
   # GET /account
   def account
     if current_user.access == 1
-      redirect_to "/"
+      redirect_to root_url
     end
     @booking = Booking.where(user_id: current_user.id)
   end

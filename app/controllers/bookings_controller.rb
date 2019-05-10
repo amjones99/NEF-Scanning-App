@@ -29,13 +29,19 @@ class BookingsController < ApplicationController
     end
   end
 
-  def toggle_certificate
+  def request_certificate
     @booking = Booking.where(user_id: current_user.id).first
     if @booking.certificate == false
       @booking.toggle!(:certificate)
       redirect_to account_users_path, flash: {notice: "Successfully requested certificate!"}
-    else
-      redirect_to account_users_path, flash: {notice: "Already requested certificate!"}
+    end
+  end
+
+  def cancel_certificate
+    @booking = Booking.where(user_id: current_user.id).first
+    if @booking.certificate == true
+      @booking.toggle!(:certificate)
+      redirect_to account_users_path, flash: {notice: "Successfully cancelled request!"}
     end
   end
 
