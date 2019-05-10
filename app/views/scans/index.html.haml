@@ -14,15 +14,7 @@
         url: `/bookings/${content}`,
         data: {'booking[attended]': 1},
         dataType: "html",
-        // dataType: dataType
       });
-      // $.post(`/bookings/${content}`,
-      // {
-      //   'booking[attended]': 1
-      // },
-      // function(data, status) {
-      //   alert("Data: " + data + "\nStatus: " + status);
-      // })
     });
 
     Instascan.Camera.getCameras().then(function (cameras) {

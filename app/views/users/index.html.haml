@@ -38,20 +38,20 @@
   %tbody
     - @users_with_attended.each do |user|
       %tr
-        - if(user.bookings_reference)
-          %td= user.username
-          %td= user.access
-          %td= user.institution
-          %td= user.email
-          %td= user.name
-          %td= link_to bool_to_glyph(user.bookings_attended), edit_booking_path(Booking.where(user_id: user.id).first)
-          %td.dropdown
-            %btn.btn.btn-secondary.dropdown-toggle
-              Options
-            .dropdown-content
-              = link_to 'Show', user, class: 'dropdown-item'
-              = link_to 'Edit', edit_user_path(user), class: 'dropdown-item'
-              = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
-
+        %td= user.username
+        %td= user.access
+        %td= user.institution
+        %td= user.email
+        %td= user.name
+        %td= bool_to_glyph(user.bookings_attended)
+        %td.dropdown
+          %btn.btn.btn-secondary.dropdown-toggle
+            Options
+          .dropdown-content
+            = link_to 'Show', user, class: 'dropdown-item'
+            = link_to 'Edit', edit_user_path(user), class: 'dropdown-item'
+            = link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
+            -# = link_to 'Toggle Attended', toggle_attended_booking_path(Booking.where(user_id: user.id).first), method: :patch, remote: :true,  class: 'dropdown-item', :onclick => 'location.reload()'
+            -# = link_to 'Toggle Attended', edit_booking_path(Booking.where(user_id: user.id).first), class: 'dropdown-item'
 
 = link_to 'New User', new_user_path, class: 'btn btn-primary btn-new-user'

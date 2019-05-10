@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   end
   resources :bookings do
     get :existing, on: :collection
+    # member do
+    #   patch :toggle_attended
+    # end
   end
   resources :pages do
     get :home, on: :collection
@@ -42,7 +45,7 @@ Rails.application.routes.draw do
   get 'scans/qrU'
   get 'scans/show/:id', to: 'scans#show'
 
-  root to: "users#indexU"
+  root to: "bookings#index"
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
