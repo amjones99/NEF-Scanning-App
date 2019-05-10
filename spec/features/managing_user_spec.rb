@@ -33,15 +33,13 @@ describe 'Managing user' do
     click_button 'Log in'
     have_css("img[src*='/map.jpg']")
   end
-  specify 'I can see a timetable ' do
-    FactoryBot.create :user, access: 2
-    visit '/users'
-    fill_in 'Username', with:'testinguser'
-    fill_in 'Password', with:'password'
-    click_button 'Log in'
-    #click_link 'Timetable'
-    #expect(response).to redirect_to %r(\Ahttps://bit.ly/2IKIwqh)
-  end
+#   specify 'I can see a timetable ' do
+#     FactoryBot.create :user, access: 2
+#     visit '/users'
+#     fill_in 'Username', with:'testinguser'
+#     fill_in 'Password', with:'password'
+#     click_button 'Log in'
+# end
   specify 'I can see a badge ' do
     FactoryBot.create :user, access: 2
     visit '/users'
