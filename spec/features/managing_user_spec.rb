@@ -49,4 +49,15 @@ describe 'Managing user' do
     click_link 'Badge'
     expect(page).to have_content 'Badge'
   end
+  specify 'I can request a certificate of attendance' do
+    FactoryBot.create :user, access: 2
+    FactoryBot.create :booking
+    visit '/users/'
+    fill_in 'Username', with:'testinguser'
+    fill_in 'Password', with:'password'
+    click_button 'Log in'
+    click_link 'Account'
+    click_link 'Request Certificate of attendance'
+    expect(page).to have_content 'Successfully requested certificate!'
+  end
 end

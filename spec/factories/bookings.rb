@@ -19,13 +19,14 @@
 
 FactoryBot.define do
   factory :booking do
-    booking_reference { "" }
-    userid { "" }
-    institution { "MyString" }
-    ticket_type { "" }
+    booking_reference { "123456789" }
+    userid { "1" }
+    institution { "Univerity of Sheffield" }
+    ticket_type { "2" }
     access_req { false }
     catering { false }
+    certificate { false }
     attended { false }
-    dietary_req { "MyString" }
+    dietary_req { "disabled" }
   end
 end
