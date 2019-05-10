@@ -29,6 +29,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  def toggle_certificate
+    @booking = Booking.where(user_id: current_user.id).first
+    if @booking.certificate == false
+      @booking.toggle!(:certificate)
+      redirect_to account_users_path, flash: {notice: "Successfully requested certificate!"}
+    else
+      redirect_to account_users_path, flash: {notice: "Already requested certificate!"}
+    end
+  end
+
   # POST /bookings
   def create
     @booking = Booking.new(booking_params)
@@ -49,14 +59,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  # def toggle_attended
-  #   if @booking.toggle!(:attended)
-  #     respond_to do |format|
-  #       format.js
-  #       format.html {render action: "index", notice: "Booking was successfully update"}
-  #   end
-  # end
-
   # DELETE /bookings/1
   def destroy
     @booking.destroy
@@ -71,7 +73,7 @@ class BookingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def booking_params
-      params.require(:booking).permit(:booking_reference, :institution, :ticket_type, :access_req, :catering, :attended, :dietary_req, :conference_id, :user_id)
+      params.require(:booking).permit(:booking_reference, :institution, :ticket_type, :access_req, :catering, :certificate, :attended, :dietary_req, :conference_id, :user_id)
     end
 
 end

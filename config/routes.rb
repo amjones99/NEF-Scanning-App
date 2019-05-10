@@ -23,10 +23,11 @@ Rails.application.routes.draw do
     get :qrU, on: :collection
   end
   resources :bookings do
+    member do
+      put :toggle_certificate
+    end
     get :existing, on: :collection
-    # member do
-    #   patch :toggle_attended
-    # end
+
   end
   resources :pages do
     get :home, on: :collection
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
 
   get :ie_warning, to: 'errors#ie_warning'
   get :javascript_warning, to: 'errors#javascript_warning'
-  
+
   get 'scans/index'
 
   root to: "bookings#index"

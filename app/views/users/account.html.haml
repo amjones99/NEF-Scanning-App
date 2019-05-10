@@ -11,6 +11,8 @@
   %b Name:
   = current_user.name
 
-
-= link_to 'Edit', "/users/editU"
+= link_to "Request Certificate of attendance", toggle_certificate_booking_path(@booking), method: :put
+%br
+%br
+= link_to 'Edit Account', "/users/editU"
 = link_to 'Change Password', "/users/changepw"

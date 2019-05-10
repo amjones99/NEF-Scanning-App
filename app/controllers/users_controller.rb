@@ -35,9 +35,17 @@
   # GET /notificationsU
   def notificationsU
     if current_user.access == 1
-      redirect_to "/users/"
+      redirect_to "/users"
     end
     @notifications = Notification.all
+  end
+
+  # GET /account
+  def account
+    if current_user.access == 1
+      redirect_to "/"
+    end
+    @booking = Booking.where(user_id: current_user.id)
   end
 
   # GET /editU
@@ -51,7 +59,6 @@
 
   # GET /badge
   def badge
-
     @bookingUserID = Booking.where(user_id: current_user.id)
   end
 

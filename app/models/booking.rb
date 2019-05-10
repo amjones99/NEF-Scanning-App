@@ -7,6 +7,7 @@
 #  attended          :boolean
 #  booking_reference :text
 #  catering          :boolean
+#  certificate       :boolean
 #  dietary_req       :string
 #  institution       :string
 #  ticket_type       :integer

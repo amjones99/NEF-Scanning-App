@@ -4,9 +4,6 @@
 = current_user.name
 %h3 QR codes
 
-
-
-
 - @bookingUserID.each do |b|
  %b Conference:
  - Conference.where(id: b.conference_id).each do |c|

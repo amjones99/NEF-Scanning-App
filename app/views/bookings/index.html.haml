@@ -26,6 +26,7 @@
       %th=sort_link(@q, :ticket_type, 'Ticket Type')
       %th=sort_link(@q, :access_req, 'Access Requirements')
       %th=sort_link(@q, :catering, 'Catering')
+      %th=sort_link(@q, :certificate, 'Certificate')
       %th=sort_link(@q, :attended, 'Attended')
       %th=sort_link(@q, :dietary_req, 'Dietary Requirements')
       %th=sort_link(@q, :conference_id, 'Conference')
@@ -40,6 +41,7 @@
         %td= booking.ticket_type
         %td= booking.access_req
         %td= bool_to_glyph(booking.catering)
+        %td= bool_to_glyph(booking.certificate)
         %td= bool_to_glyph(booking.attended)
         %td= booking.dietary_req
         %td= booking.conference_id
