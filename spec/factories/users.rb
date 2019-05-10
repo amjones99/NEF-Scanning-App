@@ -30,11 +30,11 @@
 FactoryBot.define do
   factory :user do
     #userid { 1 }
-    username { "usert" }
+    username { "testinguser" }
     password { "password" }
     access { 1 }
     email { "email@email" }
     name { "MyString" }
-    institution {'sheffield university'}  
+    institution {'sheffield university'}
   end
 end
