@@ -107,14 +107,14 @@ class UsersController < ApplicationController
           sign_in(@user, :bypass => true)
           redirect_to '/users/account', notice: 'User was successfully updated.'
         else
-          render :edit
+          render :editU
         end
       else
         if @user.update(user_params)
           sign_in(@user, :bypass => true)
           redirect_to '/users/account', notice: 'User was successfully updated.'
         else
-          render :edit
+          render :editU
         end
       end
     end
