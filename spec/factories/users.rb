@@ -34,7 +34,7 @@ FactoryBot.define do
     password { "password" }
     access { 1 }
     email { "email@email" }
-    name { "MyString" }
+    name { "User12345" }
     institution {'sheffield university'}
   end
 end
