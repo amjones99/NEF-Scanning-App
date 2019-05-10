@@ -4,12 +4,13 @@ require 'rails_helper'
 describe 'Managing user as admin' do
   specify 'I can add new user' do
     FactoryBot.create :user
-    visit '/users/new'
-    fill_in 'Username', with:'usert'
+    visit '/users'
+    fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
     click_button 'Log in'
+    page.find('#wrap').find_link('Add User').click
     fill_in 'Username', with: 'user1'
-    fill_in 'Password', with: 'password'
+    #fill_in 'Password', with: 'password'
     fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user1'
@@ -23,12 +24,13 @@ describe 'Managing user as admin' do
   specify 'I can edit a user' do
     FactoryBot.create :user
     visit '/users'
-    fill_in 'Username', with:'usert'
+    expect(page).to have_content 'Password'
+    fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
     click_button 'Log in'
     click_link 'Edit'
     fill_in 'Username', with: 'usertest'
-    fill_in 'Password', with: 'password'
+    #fill_in 'Password', with: 'password'
     fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user'
@@ -37,36 +39,31 @@ describe 'Managing user as admin' do
   end
 
   specify 'I can see a list of users' do
-    user1 = FactoryBot.create :user, name: 'User1', email: 'test@test.t'
-    FactoryBot.create :user
+    user1 = FactoryBot.create :user, name: 'testuser2', email: 'test@test.t'
     visit '/users'
-    fill_in 'Username', with:'usert'
+    fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
     click_button 'Log in'
-    within(:css, 'table') {expect(page).to have_content 'User1'}
+    within(:css, 'table') {expect(page).to have_content 'testuser2'}
   end
 
   specify 'I can delete users' do
-    FactoryBot.create :user, name: 'test', email: 'test@test.t'
-    FactoryBot.create :user
+    FactoryBot.create :user, name: 'deleteuser', email: 'test@test.t'
     visit '/users'
-    fill_in 'Username', with:'usert'
+    fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
     click_button 'Log in'
     click_link 'Destroy'
-    fill_in 'Username', with:'usert'
-    fill_in 'Password', with:'password'
-    click_button 'Log in'
-    within(:css, 'table') {expect(page).to_not have_content 'test'}
+    expect(page).to_not have_content 'deleteuser'
   end
 
   specify 'I cant access user pages as an admin ' do
     user1 = FactoryBot.create :user, name: 'User1', email: 'test@test.t'
     visit '/users'
-    fill_in 'Username', with:'usert'
+    fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
     click_button 'Log in'
-    visit '/users/badge'
+    visit '/users/indexU'
     expect(page).to have_content 'All users'
   end
 end
