@@ -1,21 +1,3 @@
 %p#notice= notice
-
-%p
-  %b Conference Id :
-  = @timetable.conference_id
-%p
-  %b Event Id:
-  = @timetable.event_id
-%p
-  %b Day number:
-  = @timetable.day_num
-%p
-  %b Start time:
-  = @timetable.start_time.strftime("%H:%M:%S")
-%p
-  %b End time:
-  = @timetable.end_time.strftime("%H:%M:%S")
-
-= link_to 'Edit', edit_timetable_path(@timetable)
-\|
+= image_tag show_image_timetable_path(@timetable), id: 'timetable', class: 'img-responsive'
 = link_to 'Back', timetables_path
