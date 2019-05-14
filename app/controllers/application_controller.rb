@@ -1,3 +1,5 @@
+#Application_controller is used to store functions for general use throughout the application
+
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # Ensure that CanCanCan is correctly configured

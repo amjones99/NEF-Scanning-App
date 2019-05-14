@@ -1,3 +1,5 @@
+#Forms_helper is a ruby helper used to extract complex logic out of the view in order to organize Forms code better.
+
 module FormsHelper
 
   def cancel_button(url, text="Cancel")

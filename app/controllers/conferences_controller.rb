@@ -1,3 +1,5 @@
+#Conferences_controller is a ruby controller used to store functions for use throughout the application specific to Conference tasks
+
 class ConferencesController < ApplicationController
   before_action :set_conference, only: [:show, :edit, :update, :destroy]
 

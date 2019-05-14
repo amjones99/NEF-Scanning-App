@@ -1,3 +1,5 @@
+#Notifications_controller is a ruby controller used to store functions for use throughout the application specific to Notifications tasks
+
 class NotificationsController < ApplicationController
   before_action :set_notification, only: [:show, :edit, :update, :destroy]
 

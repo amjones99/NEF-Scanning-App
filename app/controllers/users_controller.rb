@@ -1,4 +1,6 @@
-  class UsersController < ApplicationController
+#Users_controller is a ruby controller used to store functions for use throughout the application specific to User tasks
+
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # helper_method :sort_column, :sort_direction
 

@@ -1,3 +1,5 @@
+#User_decorator is a ruby decorator used to attach additional responsibilities to User objects dynamically
+
 class UserDecorator < Draper::Decorator
   delegate_all
 

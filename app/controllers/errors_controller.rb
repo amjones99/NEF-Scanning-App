@@ -1,3 +1,5 @@
+#Errors_controller is a ruby controller used to store functions for use throughout the application specific to Error tasks
+
 class ErrorsController < ApplicationController
 
   skip_before_action :ie_warning

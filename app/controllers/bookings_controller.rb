@@ -1,3 +1,5 @@
+#Bookings_controller is a ruby controller used to store functions for use throughout the application specific to Booking tasks
+
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 

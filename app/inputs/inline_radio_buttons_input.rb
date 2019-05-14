@@ -1,3 +1,5 @@
+#Inline_Radio_Buttons_input is a ruby file used to handle any data that is read by the program, either from a keyboard, file or other programs in InlineRadioButtons format
+
 class InlineRadioButtonsInput < SimpleForm::Inputs::CollectionRadioButtonsInput
 
   def input(wrapper_options = nil)

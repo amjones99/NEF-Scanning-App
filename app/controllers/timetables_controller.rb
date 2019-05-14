@@ -1,3 +1,5 @@
+#Timetables_controller is a ruby controller used to store functions for use throughout the application specific to Timetables tasks
+
 class TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction

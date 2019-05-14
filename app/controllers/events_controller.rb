@@ -1,3 +1,5 @@
+#Events_controller is a ruby controller used to store functions for use throughout the application specific to Events tasks
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
