@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
+  
   # GET /events
   def index
     @events = Event.order(sort_column + " " + sort_direction)
