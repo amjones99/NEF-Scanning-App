@@ -51,6 +51,7 @@ describe 'Managing user' do
   end
   specify 'I can request a certificate of attendance' do
     FactoryBot.create :user, access: 2
+    FactoryBot.create :conference
     FactoryBot.create :booking
     visit '/users/'
     fill_in 'Username', with:'testinguser'

@@ -66,4 +66,15 @@ describe 'Managing user as admin' do
     visit '/users/indexU'
     expect(page).to have_content 'All users'
   end
+  specify 'I change a user to attended ' do
+    FactoryBot.create :user
+    FactoryBot.create :conference
+    FactoryBot.create :booking
+    visit '/bookings'
+    fill_in 'Username', with:'testinguser'
+    fill_in 'Password', with:'password'
+    click_button 'Log in'
+    click_link 'Toggle Attended'
+    expect(page).to have_content 'Booking was successfully updated.'
+  end
 end

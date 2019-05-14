@@ -53,7 +53,9 @@
             = link_to 'Edit', edit_booking_path(booking), class: 'dropdown-item'
             = link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
             -# = link_to 'Toggle Attended', toggle_attended_booking_path(booking), method: :patch, remote: :true,  class: 'dropdown-item'
-            = link_to 'Toggle Attended', booking_path(booking, booking: {attended: !booking.attended}), method: :put
+            = link_to 'Toggle Attended', booking_path(booking, booking: {attended: !booking.attended}), method: :put, class: 'dropdown-item'
+
+
 
 
 = link_to 'New Booking', new_booking_path, class: 'btn btn-primary btn-new-user'
