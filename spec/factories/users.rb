@@ -29,7 +29,7 @@
 
 FactoryBot.define do
   factory :user do
-    #userid { 1 }
+    id { 1 }
     username { "testinguser" }
     password { "password" }
     access { 1 }

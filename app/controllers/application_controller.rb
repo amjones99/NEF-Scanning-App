@@ -1,3 +1,5 @@
+#Application_controller is used to store functions for general use throughout the application
+
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   # Ensure that CanCanCan is correctly configured
@@ -40,6 +42,7 @@ class ApplicationController < ActionController::Base
     super(file, opts)
   end
 
+  #Disables caching of headers throughout application
   private
     def update_headers_to_disable_caching
       response.headers['Cache-Control'] = 'no-cache, no-cache="set-cookie", no-store, private, proxy-revalidate'

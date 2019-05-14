@@ -1,8 +1,11 @@
-  class UsersController < ApplicationController
+#Users_controller is a ruby controller used to store functions for use throughout the application specific to User tasks
+
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # helper_method :sort_column, :sort_direction
 
   # GET /users
+  #Allows admins to see a list of users
   def index
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -18,6 +21,7 @@
   end
 
   #  GET /indexU
+  #Allows users to see their current booking
   def indexU
     if current_user.access == 1
         redirect_to "/users/"
@@ -27,12 +31,14 @@
   # end
 
   # GET /import
+  #Allows importing of files in other methods
   def import
     User.import(params[:file])
     redirect_to root_url, notice: "Successfully Imported File!"
   end
 
   # GET /notificationsU
+  #Allows users to see all notifications created
   def notificationsU
     if current_user.access == 1
       redirect_to "/users"
@@ -41,6 +47,7 @@
   end
 
   # GET /account
+  #Allow users to see their account
   def account
     if current_user.access == 1
       redirect_to root_url
@@ -49,20 +56,24 @@
   end
 
   # GET /editU
+  #Allows users to edit their account details
   def editU
     @user = current_user
   end
 
+  #Allows users to change their password
   def changepw
     @user = current_user
   end
 
   # GET /badge
+  #Allow users to see their badge
   def badge
     @bookingUserID = Booking.where(user_id: current_user.id)
   end
 
   # GET /users/1
+  #Allow admins to see specific user accounts
   def show
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -70,6 +81,7 @@
   end
 
   # GET /users/new
+  #Allow admins to create user accounts
   def new
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -78,6 +90,7 @@
   end
 
   # GET /users/1/edit
+  #Allow admins to edit specific user accounts
   def edit
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -86,6 +99,7 @@
   end
 
   # POST /users
+  #Allows the creation of new users by other methods
   def create
     @user = User.new(user_params)
     pw = SecureRandom.hex(8)
@@ -100,6 +114,7 @@
   end
 
   # PATCH/PUT /users/1
+  #Updates users with the current parameters when called -- used with forms
   def update
     if current_user.access == 1
       if user_params["password"].blank?
@@ -137,6 +152,7 @@
   end
 
   # DELETE /users/1
+  #Allows destruction of users
   def destroy
     @user.destroy
     redirect_to users_url, notice: 'User was successfully destroyed.'
@@ -153,6 +169,7 @@
       params.require(:user).permit(:userid, :username, :password, :access, :institution, :email, :name, :booking_reference)
     end
 
+    # Only allow a trusted parameter "white list" through.
     def notification_params
       params.require(:notification).permit(:not_id, :not_des, :time)
     end

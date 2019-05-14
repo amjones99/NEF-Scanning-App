@@ -19,8 +19,9 @@
 
 FactoryBot.define do
   factory :booking do
+    id { "1" }
     booking_reference { "123456789" }
-    userid { "1" }
+    user_id { "1" }
     institution { "Univerity of Sheffield" }
     ticket_type { "2" }
     access_req { false }
@@ -28,5 +29,6 @@ FactoryBot.define do
     certificate { false }
     attended { false }
     dietary_req { "disabled" }
+    conference_id { "1" }
   end
 end

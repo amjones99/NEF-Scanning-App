@@ -1,3 +1,5 @@
+#Conference_decorator is a ruby decorator used to attach additional responsibilities to Conference objects dynamically
+
 class ConferenceDecorator < Draper::Decorator
   delegate_all
 

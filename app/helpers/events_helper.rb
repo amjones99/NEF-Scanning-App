@@ -1,3 +1,5 @@
+#Events_helper is a ruby helper used to extract complex logic out of the view in order to organize Events code better.
+
 module EventsHelper
   def sortable(column, title = nil)
     title ||= column.titleize

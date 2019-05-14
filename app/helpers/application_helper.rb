@@ -1,3 +1,5 @@
+#Application_helper is a ruby helper used to extract complex logic out of the view in order to organize code better.
+
 module ApplicationHelper
   def nav_link_to(current_identifier, *args, &block)
     identifier = block_given? ? args[1].delete(:identifier) : args[2].delete(:identifier)

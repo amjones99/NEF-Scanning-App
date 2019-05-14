@@ -1,3 +1,5 @@
+#Event_decorator is a ruby decorator used to attach additional responsibilities to Event objects dynamically
+
 class EventDecorator < Draper::Decorator
   delegate_all
 

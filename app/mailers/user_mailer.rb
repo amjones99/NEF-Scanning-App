@@ -1,3 +1,5 @@
+#User_Mailer is a ruby file used that allows you to send emails from your application using mailer classes and views
+
 class UserMailer < ActionMailer::Base
   default from: 'NEF Scanning App <no-reply@sheffield.ac.uk>'
 

@@ -1,3 +1,5 @@
+#Booking_decorator is a ruby decorator used to attach additional responsibilities to Booking objects dynamically
+
 class BookingDecorator < Draper::Decorator
   delegate_all
 

@@ -14,9 +14,11 @@
 
 FactoryBot.define do
   factory :conference do
-    conf_id { 1 }
+    id { 1 }
     days { 1 }
     name { "MyString" }
     location { "MyString" }
+    start_date { '2019-04-28 23:59:36.148336' }
+    end_date { '2019-04-28 23:59:36.148336' }
   end
 end

@@ -1,3 +1,5 @@
+#Timetable_decorator is a ruby decorator used to attach additional responsibilities to Timetable objects dynamically
+
 class TimetableDecorator < Draper::Decorator
   delegate_all
 
