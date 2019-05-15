@@ -1,15 +1,42 @@
 %h1 Changing Password for #{@user.username}
-
 = simple_form_for(@user) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
     = f.label "New Password:"
-    = f.password_field :password, hide_label: true, placeholder: "Enter a new Password"
+    = f.password_field :password, hide_label: true, placeholder: "Enter a new Password" , id: 'new-password'
     %br
     = f.label "Confirm Password:"
-    = f.password_field :password_confirmation, hide_label: true, placeholder: "Confirm new Password"
+    = f.password_field :password_confirmation, hide_label: true, placeholder: "Confirm new Password", id: 'confirm-password', :class => 'never-submit'
 
+  %span#message
   .form-actions
-    = f.button :submit, value: "Change Password"
+    = f.button :submit, value: "Change Password", :id => 'submit-password'
+
+:javascript
+  $(document).ready(function() {
+  $('#submit-password').hide();
+    $('form').submit(function() {
+      $('.never-submit').prop('disabled', 'disabled');
+      $('#submit-password').prop('disabled', 'disabled');
+      return true;
+    });
+  });
+
+  $('#new-password, #confirm-password').on('keyup', function() {
+    $('#submit-password').hide();
+    if ($('#new-password').val().length > 5) {
+      $('#message').hide();
+      if ($('#new-password').val() === $('#confirm-password').val()) {
+        $('#message').show();
+        $('#message').html('Matching').css('color', 'green');
+        $('#submit-password').show();
+      } else {
+        $('#message').show();
+        $('#message').html('Passwords do not match').css('color', 'red');
+      }
+    } else {
+      $('#message').html('Password must be 6 or more characters long').css('color', 'red');
+    }
+  });

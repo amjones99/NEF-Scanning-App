@@ -11,14 +11,6 @@
       console.log(content);
       console.log(`${window.location.host}/bookings/${content}`)
 
-    //   $.ajax({
-    //     method: "PUT",
-    //     url: `/bookings/${content}`,
-    //     data: {'booking[attended]': 1},
-    //     dataType: "html",
-    //   })
-    // });
-
       $.ajax({
         method: "POST",
         url: `/scans/validate_scan`,
