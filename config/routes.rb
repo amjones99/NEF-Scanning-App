@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   resources :scans do
     get :qrU, on: :collection
+    collection {post :validate_scan}
   end
   resources :bookings do
     member do
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
   get :javascript_warning, to: 'errors#javascript_warning'
 
   get 'scans/index'
+  post "scans/index" => "scans#validate_scan"
 
   root to: "bookings#index"
 

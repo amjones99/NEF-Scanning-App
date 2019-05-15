@@ -1,3 +1,5 @@
+#Inline_Check_Boxes_input is a ruby file used to handle any data that is read by the program, either from a keyboard, file or other programs in InlineCheckBoxes format
+
 class InlineCheckBoxesInput < SimpleForm::Inputs::CollectionCheckBoxesInput
 
   def input(wrapper_options = nil)

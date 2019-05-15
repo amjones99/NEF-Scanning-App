@@ -1,3 +1,5 @@
+#Date_String_input is a ruby file used to handle any data that is read by the program, either from a keyboard, file or other programs in DateString format
+
 class DateStringInput < SimpleForm::Inputs::Base
   def input(wrapper_options = nil)
     date = @builder.object.send attribute_name
@@ -5,7 +7,7 @@ class DateStringInput < SimpleForm::Inputs::Base
     merged_input_options = merge_wrapper_options(input_html_options.merge(input_html), wrapper_options)
     "#{@builder.text_field attribute_name, merged_input_options}".html_safe
   end
-  
+
   def input_html_classes
     super.push('form-control')
   end

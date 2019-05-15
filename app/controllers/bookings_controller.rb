@@ -1,7 +1,10 @@
+#Bookings_controller is a ruby controller used to store functions for use throughout the application specific to Booking tasks
+
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   # GET /bookings
+  #Allows admins to access all bookings
   def index
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -12,6 +15,7 @@ class BookingsController < ApplicationController
   end
 
   # GET /bookings/1
+  #Allows admins to access specific bookings
   def show
     if current_user.access == 2
       redirect_to "/users/indexU"
@@ -23,12 +27,15 @@ class BookingsController < ApplicationController
   end
 
   # GET /bookings/1/edit
+  #Allows admins to edit specific bookings
   def edit
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
   end
 
+
+  #Toggles the field in the database and sets it to true
   def request_certificate
     @booking = Booking.where(user_id: current_user.id).first
     if @booking.certificate == false
@@ -37,6 +44,7 @@ class BookingsController < ApplicationController
     end
   end
 
+  #Toggles the field in the database and sets it to false
   def cancel_certificate
     @booking = Booking.where(user_id: current_user.id).first
     if @booking.certificate == true
@@ -46,6 +54,7 @@ class BookingsController < ApplicationController
   end
 
   # POST /bookings
+  #Allows creation of new bookings
   def create
     @booking = Booking.new(booking_params)
 
@@ -57,6 +66,7 @@ class BookingsController < ApplicationController
   end
 
   # PATCH/PUT /bookings/1
+  #Updates bookings with the current parameters when called -- used with forms 
   def update
     if @booking.update(booking_params)
       redirect_to bookings_url, notice: 'Booking was successfully updated.'
@@ -66,6 +76,7 @@ class BookingsController < ApplicationController
   end
 
   # DELETE /bookings/1
+  #Allows destruction of bookings
   def destroy
     @booking.destroy
     redirect_to bookings_url, notice: 'Booking was successfully destroyed.'

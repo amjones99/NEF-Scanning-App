@@ -1,3 +1,5 @@
+#Scan_decorator is a ruby decorator used to attach additional responsibilities to Scan objects dynamically
+
 class ScanDecorator < Draper::Decorator
   delegate_all
 

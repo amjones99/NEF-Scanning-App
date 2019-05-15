@@ -6,17 +6,32 @@
   :javascript
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false });
     scanner.addListener('scan', function (content) {
-       console.log(content);
-       console.log(`${window.location.host}/bookings/${content}`)
-       window.alert("User scanned in successfully");
+      console.log(content);
+      console.log(`${window.location.host}/bookings/${content}`)
+
       $.ajax({
         method: "PUT",
         url: `/bookings/${content}`,
         data: {'booking[attended]': 1},
         dataType: "html",
+      })
+      .fail({
+        window.alert('Error updating booking! Try again!')
       });
     });
 
+    //   $.ajax({
+    //     method: "POST",
+    //     url: `/scans/validate_scan`,
+    //     data: {'booking[attended]': 1},
+    //     success: function(data) {
+    //      window.alert(data['message'])
+    //     }
+    //   })
+    //   .fail(function () {
+    //     window.alert('Error scanning user! Try again!')
+    //   });
+    // });
     Instascan.Camera.getCameras().then(function (cameras) {
       if (cameras.length > 0) {
         scanner.start(cameras[1]);

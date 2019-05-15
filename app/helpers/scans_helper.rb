@@ -1,3 +1,5 @@
+#Scans_helper is a ruby helper used to extract complex logic out of the view in order to organize Scans code better.
+
 module ScansHelper
   def generate_qr(text)
   require 'barby'
