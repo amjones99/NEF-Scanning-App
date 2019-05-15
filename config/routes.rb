@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :events
   resources :conferences do
     get :map, on: :collection
+    get :export, on: :member
   end
   resources :timetables do
     get :show_image, on: :member
