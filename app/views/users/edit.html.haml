@@ -1,6 +1,9 @@
 %h1 Editing user: #{@user.username}
 
-= render 'form0'
+- if @user.access == 2
+  = render 'form0'
+- else
+  = render 'form1'
 
 = link_to 'Show', @user
 \|

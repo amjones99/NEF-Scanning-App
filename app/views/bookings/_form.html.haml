@@ -4,16 +4,16 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :booking_reference
-    = f.input :institution
-    = f.input :ticket_type
-    = f.input :access_req
+    = f.input :booking_reference, placeholder: "E.g. 123456789"
+    = f.input :institution, placeholder: "Enter Institution"
+    = f.input :ticket_type, label: "Number of Days", placeholder: "Enter the Number of Days this ticket is valid for"
+    = f.input :access_req, label: "Access Requirements (e.g. Wheelchair)", placeholder: "Leave blank if unrequired"
     = f.input :catering
     = f.input :certificate
     = f.input :attended
-    = f.input :dietary_req
-    = f.association :conference
-    = f.association :user
+    = f.input :dietary_req, label: "Dietary Requirements (e.g. Vegan)", placeholder: "Leave blank if unrequired"
+    = f.association :conference, prompt: "Select a Conference"
+    = f.association :user, prompt: "Choose a User"
 
   .form-actions
     = f.button :submit

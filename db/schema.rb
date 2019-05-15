@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_05_15_123100) do
     t.integer "user_id"
     t.integer "conference_id"
     t.boolean "certificate", default: false
-    t.index ["booking_reference"], name: "bookings_booking_reference", unique: true
   end
 
   create_table "conferences", force: :cascade do |t|

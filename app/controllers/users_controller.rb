@@ -114,7 +114,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   #Updates users with the current parameters when called -- used with forms
   def update
-    if current_user.access == 1
+    puts @user.access.as_json
+    if current_user.access == 1 && @user.access == 2
+      if @user.update(user_params)
+        redirect_to '/users', notice: 'User was successfully updated.'
+      else
+        render :edit
+      end
+    elsif current_user.access = 1
       if @user.update(user_params)
         redirect_to '/users', notice: 'User was successfully updated.'
       else

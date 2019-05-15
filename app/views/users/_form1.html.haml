@@ -4,12 +4,16 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
+    = f.input :username
+    = f.input :password
     = f.label "User Access"
     %br
     = f.select :access, [['Admin',1],['Delegate', 2]]
     = f.input :institution
     = f.input :email
     = f.input :name
+    -# - @booking.each do |b|
+    -#   = b.input :attended
 
   .form-actions
     = f.button :submit

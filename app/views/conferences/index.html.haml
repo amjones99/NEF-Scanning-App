@@ -23,7 +23,7 @@
 %table.table.table-striped
   %thead
     %tr
-      %th=sort_link(@q, :id, 'Conference', default_order: :desc)
+      %th=sort_link(@q, :id, 'Conference ID', default_order: :desc)
       %th=sort_link(@q, :days, 'Days')
       %th=sort_link(@q, :name, 'Name')
       %th=sort_link(@q, :location, 'Location')
@@ -47,7 +47,7 @@
             = link_to 'Show', conference, class: 'dropdown-item'
             = link_to 'Edit', edit_conference_path(conference), class: 'dropdown-item'
             = link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
-       
+
 %br
 
 = link_to 'New Conference', new_conference_path,  class: 'btn btn-primary btn-new-user'
