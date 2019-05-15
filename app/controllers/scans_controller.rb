@@ -12,15 +12,17 @@ class ScansController < ApplicationController
 # POST scans/validate_scan
   def validate_scan
     id = Booking.find_by(id: params[:id])
-    puts id
-    if !id.nil?
-      if id.attended == true
+    parsedBooking = id.as_json
+    puts parsedBooking
+    if id.nil?
+      render json: {message: "Delegate does not exist"}
+    else
+      if parsedBooking["attended"] == true
         render json: {message: "Delegate has already been signed in "}
       else
-        render json: {message: "Send nudes"}
+        id.update(:attended => 1)
+        render json: {message: "Success"}
       end
-    else
-      render json: {message: "Delegate does not exist"}
     end
   end
 

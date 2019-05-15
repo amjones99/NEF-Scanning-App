@@ -39,6 +39,7 @@
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
+
 .col {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
@@ -91,4 +92,8 @@
 .logo {
   position: inherit;
   left: 25%;
+}
+
+#preview {
+  width: 100%;
 }

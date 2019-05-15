@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
+    render plain: @booking
   end
 
   def existing
@@ -66,7 +67,7 @@ class BookingsController < ApplicationController
   end
 
   # PATCH/PUT /bookings/1
-  #Updates bookings with the current parameters when called -- used with forms 
+  #Updates bookings with the current parameters when called -- used with forms
   def update
     if @booking.update(booking_params)
       redirect_to bookings_url, notice: 'Booking was successfully updated.'
