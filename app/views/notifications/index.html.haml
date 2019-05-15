@@ -1,5 +1,7 @@
 %h1 Notifications
 
+= link_to 'New Notification', new_notification_path, class: 'btn btn-primary btn-new-notification'
+
 = search_form_for @q do |f|
   -# filter name
   .form-row
@@ -38,5 +40,3 @@
             = link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
 
 %br
-
-= link_to 'New Notification', new_notification_path, class: 'btn btn-primary btn-new-notification'

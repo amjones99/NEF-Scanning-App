@@ -1,13 +1,14 @@
 %h1 Listing bookings
-
+= link_to 'New Booking', new_booking_path, class: 'btn btn-primary btn-new-user'
+%br
 = search_form_for(@q) do |f|
   .form-row
     .col.form-group
       -# filter name
-      = f.search_field :user_username, class: 'form-control', placeholder: 'Username contains:'
+      = f.search_field :user_username_cont, class: 'form-control', placeholder: 'Username contains:'
     .col.form-group
       -# filter institution
-      = f.search_field :booking_reference, class: 'form-control', placeholder: 'Booking Ref contains:'
+      = f.search_field :booking_reference_cont, class: 'form-control', placeholder: 'Booking Ref contains:'
   .form-group
     -# filter attended
     = f.label :attended
@@ -54,8 +55,3 @@
             = link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
             -# = link_to 'Toggle Attended', toggle_attended_booking_path(booking), method: :patch, remote: :true,  class: 'dropdown-item'
             = link_to 'Toggle Attended', booking_path(booking, booking: {attended: !booking.attended}), method: :put, class: 'dropdown-item'
-
-
-
-
-= link_to 'New Booking', new_booking_path, class: 'btn btn-primary btn-new-user'

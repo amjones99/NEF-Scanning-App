@@ -16,6 +16,10 @@
 #  conference_id     :integer
 #  user_id           :integer
 #
+# Indexes
+#
+#  bookings_booking_reference  (booking_reference) UNIQUE
+#
 
 class Booking < ApplicationRecord
 
