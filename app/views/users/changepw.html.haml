@@ -1,12 +1,18 @@
-%h1 Changing Password
+%h1 Changing Password for #{@user.username}
 
 = simple_form_for(@user) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.label :old_password
-    = f.text_field :old_password
+    = f.label "Old Password:"
+    = f.password_field :current_password, hide_label: true, placeholder: "Enter your old Password"
+    %br
+    = f.label "New Password:"
+    = f.password_field :password, hide_label: true, placeholder: "Enter a new Password"
+    %br
+    = f.label "Confirm Password:"
+    = f.password_field :password_confirmation, hide_label: true, placeholder: "Confirm new Password"
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, value: "Change Password"
