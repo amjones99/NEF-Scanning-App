@@ -51,7 +51,7 @@ describe 'Managing user as admin' do
     within(:css, 'table') {expect(page).to have_content 'testinguser'}
     within(:css, 'table') {expect(page).to_not have_content 'testuser2'}
   end
-  specify 'I can search for a user with username' do
+  specify 'I can search for a user with institution' do
     FactoryBot.create :user
     FactoryBot.create :user,id: 2, username:'test2' ,name: 'testuser2', email: 'test@test.t',institution: 'university of manchester'
     visit '/'
@@ -71,17 +71,15 @@ describe 'Managing user as admin' do
     fill_in 'Password', with:'password'
     click_button 'Log in'
     page.find('#wrap').find_link('Add User').click
-    #fill_in 'Username', with: 'user1'
+    fill_in 'Username', with: 'user1'
     #fill_in 'Password', with: 'password'
-    fill_in 'Access', with: 1
+    #find(:select, "Access").first(:option, 'Delegate').select_option
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user1'
     click_button 'Create User'
     expect(page).to have_content 'User was successfully created'
     page.find('#wrap').find_link('Participants').click
     expect(page).to have_content 'user1'
-    click_link 'Back'
-    within(:css, 'table') {expect(page).to have_content 'user1'}
   end
 
   specify 'I can edit a user' do
@@ -94,7 +92,7 @@ describe 'Managing user as admin' do
     click_link 'Edit'
     #fill_in 'Username', with: 'usertest'
     #fill_in 'Password', with: 'password'
-    fill_in 'Access', with: 1
+    #fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'usertest'
     click_button 'Update User'
