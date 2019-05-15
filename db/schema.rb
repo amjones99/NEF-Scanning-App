@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_175253) do
+ActiveRecord::Schema.define(version: 2019_05_14_192331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,13 +82,9 @@ ActiveRecord::Schema.define(version: 2019_05_10_175253) do
   end
 
   create_table "timetables", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "day_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "conference_id"
-    t.time "start_time"
-    t.time "end_time"
+    t.string "timetable_image_file"
   end
 
   create_table "users", force: :cascade do |t|

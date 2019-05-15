@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   resources :conferences do
     get :map, on: :collection
   end
-  resources :timetables
+  resources :timetables do
+    get :show_image, on: :member
+    get :timetable, on: :collection
+  end
   resources :users do
     collection {post :import}
     get :import, on: :collection

@@ -2,17 +2,15 @@
 
 class TimetablesController < ApplicationController
   before_action :set_timetable, only: [:show, :edit, :update, :destroy]
-  helper_method :sort_column, :sort_direction
+
   # GET /timetables
   #Allows admins to see a list of timetables
   def index
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
-    @timetables = Timetable.order(sort_column + " " + sort_direction)
+    @timetables = Timetable.all
   end
-
-
 
   # GET /timetables/1
   #Allows admins to see a specific timetable
@@ -68,10 +66,18 @@ class TimetablesController < ApplicationController
     redirect_to timetables_url, notice: 'Timetable was successfully destroyed.'
   end
 
-  #Allows a search for different timetables
-  def search
-    @timetables = Timetable.where(conference_id: params[:search][:conference_id])
-    @timetables = @timetables.where(name: params[:search][:name]) if params[:search][:name].present?
+  # GET /timetables/1
+  #Show timetable image
+  def show_image
+    @timetable = Timetable.last
+    send_file @timetable.timetable_image_file.url, disposition: 'inline'
+  end
+
+  def timetable
+    if current_user.access == 1
+      redirect_to "/timetables"
+    end
+    @timetable = Timetable.last
   end
 
   private
@@ -82,16 +88,6 @@ class TimetablesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def timetable_params
-      params.require(:timetable).permit(:session_id, :conference_id, :event_id, :day_num, :start_time, :end_time)
-    end
-
-    #Used for sorting tables by id
-    def sort_column
-      Timetable.column_names.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-    #Used for sorting tables by ascending
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      params.require(:timetable).permit(:timetable_image_file, :timetable_image_file_cache)
     end
 end

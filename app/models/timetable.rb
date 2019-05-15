@@ -2,19 +2,14 @@
 #
 # Table name: timetables
 #
-#  id            :bigint(8)        not null, primary key
-#  day_num       :integer
-#  end_time      :time
-#  start_time    :time
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  conference_id :integer
-#  event_id      :integer
+#  id                   :bigint(8)        not null, primary key
+#  timetable_image_file :string
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 class Timetable < ApplicationRecord
-  belongs_to :event
-  belongs_to :conference
+  mount_uploader :timetable_image_file, TimetableImageUploader
 
-  validates :conference_id, :event_id, :day_num, :start_time, :end_time, presence: true
+  validates :timetable_image_file, presence: true
 end
