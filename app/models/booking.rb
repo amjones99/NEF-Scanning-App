@@ -23,4 +23,5 @@ class Booking < ApplicationRecord
   belongs_to :conference
 
   validates_presence_of :user
+  validates_uniqueness_of :booking_reference
 end
