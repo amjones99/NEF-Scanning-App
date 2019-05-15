@@ -61,14 +61,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-<<<<<<< HEAD
-=======
-  #Allows users to change their password
-  def changepw
-    @user = current_user
-  end
-
->>>>>>> d40ba717659d95e59dc648cce53660b8a91da409
   # GET /badge
   #Allow users to see their badge
   def badge
