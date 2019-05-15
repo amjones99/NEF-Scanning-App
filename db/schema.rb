@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_192331) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "conference_id"
-    t.boolean "certificate"
+    t.boolean "certificate", default: false
   end
 
   create_table "conferences", force: :cascade do |t|
