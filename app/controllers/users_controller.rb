@@ -121,7 +121,7 @@ class UsersController < ApplicationController
       else
         render :edit
       end
-    elsif current_user.access = 1
+    elsif current_user.access == 1
       if @user.update(user_params)
         redirect_to '/users', notice: 'User was successfully updated.'
       else
