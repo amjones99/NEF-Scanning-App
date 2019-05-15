@@ -53,15 +53,14 @@
     @user = current_user
   end
 
-  def changepw
-    @user = current_user
-  end
-
   # GET /badge
   def badge
     @bookingUserID = Booking.where(user_id: current_user.id)
   end
 
+  def changepw
+    @user = current_user
+  end
   # GET /users/1
   def show
     if current_user.access == 2
@@ -102,38 +101,19 @@
   # PATCH/PUT /users/1
   def update
     if current_user.access == 1
-      if user_params["password"].blank?
-        if @user.update(user_params.except("password"))
-          redirect_to '/users', notice: 'User was successfully updated.'
-        else
-          render :edit
-        end
+      if @user.update(user_params)
+        redirect_to '/users', notice: 'User was successfully updated.'
       else
-        if @user.update(user_params)
-          redirect_to '/users', notice: 'User was successfully updated.'
-        else
-          render :edit
-        end
+        render :edit
       end
     else
-      if user_params["password"].blank?
-        if @user.update(user_params.except("password"))
-          sign_in(@user, :bypass => true)
-          redirect_to '/users/account', notice: 'User was successfully updated.'
-        else
-          render :editU
-        end
+      if @user.update(user_params)
+        sign_in(@user, :bypass => true)
+        redirect_to '/users/account', notice: 'User was successfully updated.'
       else
-        if @user.update(user_params)
-          sign_in(@user, :bypass => true)
-          redirect_to '/users/account', notice: 'User was successfully updated.'
-        else
-          render :editU
-        end
+        render :editU
       end
     end
-
-
   end
 
   # DELETE /users/1
@@ -150,7 +130,7 @@
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:userid, :username, :password, :access, :institution, :email, :name, :booking_reference)
+      params.require(:user).permit(:userid, :username, :password, :access, :institution, :email, :name)
     end
 
     def notification_params

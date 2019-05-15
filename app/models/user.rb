@@ -34,12 +34,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :recoverable
   validates_format_of    :email,    :with  => Devise.email_regexp
-  validates_length_of    :password, :within => Devise.password_length
+  validates_length_of    :password, :within => Devise.password_length, on: :create
   validates_uniqueness_of    :username,     :case_sensitive => true
   has_many :booking
-  validates :username, :password, :access, :email, :name, presence: true, on: :crete
-  validates :username, :password , :confirmation => true, :length =>{:within => 4..40}
-  #validates :username, :password , :confirmation => true, :length =>{:within => 6..40}, on: edit
+  validates :username, :password, :access, :email, :name, presence: true, on: :create
+  validates :username, :password , :confirmation => true, :length =>{:within => 4..40}, on: :create
+#  validates :username, :password , :confirmation => true, :length =>{:within => 6..40}
   validates :access, numericality: { less_than: 3}
   validates :access, numericality: { greater_than: 0}
 
