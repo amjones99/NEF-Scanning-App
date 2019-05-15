@@ -5,9 +5,10 @@
 
   .form-inputs
     = f.input :username
+    = f.input :password
     = f.label "User Access"
     %br
-    = f.select :access,[['Admin',1],['Delegate', 2]]
+    = f.select :access, [['Admin',1],['Delegate', 2]]
     = f.input :institution
     = f.input :email
     = f.input :name

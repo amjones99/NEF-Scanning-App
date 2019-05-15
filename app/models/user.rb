@@ -34,7 +34,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :rememberable, :recoverable
   validates_format_of    :email,    :with  => Devise.email_regexp
-  validates_length_of    :password, :within => Devise.password_length, on: :create, on: :changepw
+  validates_length_of    :password, :within => Devise.password_length, on: :create
+  validates_length_of    :password, :within => Devise.password_length, on: :changepw
+  validates_length_of    :password, :within => Devise.password_length, on: :editAdmin
   validates_uniqueness_of    :username,     :case_sensitive => true
   has_many :booking
   validates :username, :password, :access, :email, :name, presence: true, on: :create

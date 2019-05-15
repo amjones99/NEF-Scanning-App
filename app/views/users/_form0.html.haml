@@ -4,7 +4,9 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :access
+    = f.label "User Access"
+    %br
+    = f.select :access, [['Admin',1],['Delegate', 2]]
     = f.input :institution
     = f.input :email
     = f.input :name
