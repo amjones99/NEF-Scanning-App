@@ -5,7 +5,7 @@
 #  id                :bigint(8)        not null, primary key
 #  access_req        :text
 #  attended          :boolean
-#  booking_reference :text
+#  booking_reference :string
 #  catering          :boolean
 #  certificate       :boolean          default(FALSE)
 #  dietary_req       :string
@@ -15,6 +15,10 @@
 #  updated_at        :datetime         not null
 #  conference_id     :integer
 #  user_id           :integer
+#
+# Indexes
+#
+#  bookings_booking_reference  (booking_reference) UNIQUE
 #
 
 FactoryBot.define do

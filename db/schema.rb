@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_14_192331) do
+ActiveRecord::Schema.define(version: 2019_05_15_123100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.text "booking_reference"
+    t.string "booking_reference"
     t.string "institution"
     t.integer "ticket_type"
     t.text "access_req"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_192331) do
     t.integer "user_id"
     t.integer "conference_id"
     t.boolean "certificate", default: false
+    t.index ["booking_reference"], name: "bookings_booking_reference", unique: true
   end
 
   create_table "conferences", force: :cascade do |t|
