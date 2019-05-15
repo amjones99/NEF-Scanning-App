@@ -5,10 +5,10 @@
   .form-row
     .col.form-group
       -# filter name
-      = f.search_field :user_username_cont, class: 'form-control', placeholder: 'Username contains:'
+      = f.search_field :user_username_cont, class: 'form-control', placeholder: 'Username contains:',id: 'Search_username'
     .col.form-group
       -# filter institution
-      = f.search_field :booking_reference_cont, class: 'form-control', placeholder: 'Booking Ref contains:'
+      = f.search_field :booking_reference_cont, class: 'form-control', placeholder: 'Booking Ref contains:',id: 'Search_bref'
   .form-group
     -# filter attended
     = f.label :attended
