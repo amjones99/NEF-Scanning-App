@@ -22,7 +22,7 @@
       $.ajax({
         method: "POST",
         url: `/scans/validate_scan`,
-        data: {id: content},
+        data: {bookingRef: content},
         success: function(data) {
           if(data['message'] === 'Success'){
             let beep = document.getElementById('beep')

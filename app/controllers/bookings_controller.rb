@@ -34,8 +34,7 @@ class BookingsController < ApplicationController
       redirect_to "/users/indexU"
     end
   end
-
-
+  
   #Toggles the field in the database and sets it to true
   def request_certificate
     @booking = Booking.where(user_id: current_user.id).first

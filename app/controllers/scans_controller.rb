@@ -11,16 +11,17 @@ class ScansController < ApplicationController
 
 # POST scans/validate_scan
   def validate_scan
-    id = Booking.find_by(id: params[:id])
-    parsedBooking = id.as_json
+    # bookingRef = Booking.find_by(booking_reference: params[:booking_reference])
+    @curbooking = Booking.where(booking_reference: params[:bookingRef]).first
+    parsedBooking = @curbooking.as_json
     puts parsedBooking
-    if id.nil?
+    if @curbooking.nil?
       render json: {message: "Delegate does not exist"}
     else
       if parsedBooking["attended"] == true
         render json: {message: "Delegate has already been signed in "}
       else
-        id.update(:attended => 1)
+        @curbooking.update(:attended => 1)
         render json: {message: "Success"}
       end
     end

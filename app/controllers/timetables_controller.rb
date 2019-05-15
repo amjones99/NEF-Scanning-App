@@ -69,15 +69,25 @@ class TimetablesController < ApplicationController
   # GET /timetables/1
   #Show timetable image
   def show_image
+
     @timetable = Timetable.last
-    send_file @timetable.timetable_image_file.url, disposition: 'inline'
+    if @timetable.exists?
+      send_file @timetable.timetable_image_file.url, disposition: 'inline'
+    else
+      redirect_to root_url, notice: "Timetable does not exist yet"
+    end
   end
 
   def timetable
     if current_user.access == 1
       redirect_to "/timetables"
     end
-    @timetable = Timetable.last
+    @timetable = Timetable.all
+    if @timetable.exists?
+      send_file @timetable.timetable_image_file.url, disposition: 'inline'
+    else
+      redirect_to '/users/indexU', notice: "Timetable does not exist yet"
+    end
   end
 
   private
