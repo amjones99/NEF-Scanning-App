@@ -62,7 +62,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to @booking, notice: 'Booking was successfully created.'
     else
-      render :new
+      render :existing
     end
   end
 
