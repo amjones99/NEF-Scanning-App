@@ -4,23 +4,12 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= sortable 'name' , 'Conference'
-      %th= sortable 'event_id', 'Event'
-      %th= sortable 'day_num', 'Day'
-      %th= sortable 'start_time', 'Start time'
-      %th= sortable 'end_time',  'End time'
-      %th
-      %th
-      %th
+      %th Image Name
 
   %tbody
     - @timetables.each do |timetable|
       %tr
-        %td= timetable.conference.name
-        %td= timetable.event.name
-        %td= timetable.day_num
-        %td= timetable.start_time.strftime("%H:%M:%S")
-        %td= timetable.end_time.strftime("%H:%M:%S")
+        %td= timetable.timetable_image_file
         %td= link_to 'Show', timetable
         %td= link_to 'Edit', edit_timetable_path(timetable)
         %td= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' }
