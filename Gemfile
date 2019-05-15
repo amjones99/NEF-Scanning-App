@@ -52,7 +52,6 @@ gem 'rqrcode','~> 0.4.2'
 gem 'barby',  '~> 0.6.2'
 gem 'rqrcode-with-patches', '~>0.5.4'
 
-gem "roo"
 gem "iconv", "~> 1.0.3"
 
 group :development, :test do
