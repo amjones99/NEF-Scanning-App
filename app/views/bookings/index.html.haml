@@ -42,11 +42,7 @@
         %td= booking.user.username
         %td= booking.booking_reference
         %td= booking.institution
-        %td
-          - if booking.ticket_type < Conference.where(id: booking.conference_id).uniq.pluck(:days).first
-            = "Day #{booking.ticket_type}"
-          - else
-            = "Every day"
+        %td= booking.ticket_type > 1 ? " #{booking.ticket_type} Days " : " #{booking.ticket_type} Day "
         %td= booking.access_req
         %td= bool_to_glyph(booking.catering)
         %td= bool_to_glyph(booking.certificate)
