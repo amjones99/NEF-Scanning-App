@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-describe 'Managing user as admin' do
+describe 'Managing  admin features ' do
   specify 'I can log in as an admin ' do
     FactoryBot.create :user
     visit '/users'
@@ -72,8 +72,6 @@ describe 'Managing user as admin' do
     click_button 'Log in'
     page.find('#wrap').find_link('Add User').click
     fill_in 'Username', with: 'user1'
-    #fill_in 'Password', with: 'password'
-    #find(:select, "Access").first(:option, 'Delegate').select_option
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'user1'
     click_button 'Create User'
@@ -90,9 +88,6 @@ describe 'Managing user as admin' do
     fill_in 'Password', with:'password'
     click_button 'Log in'
     click_link 'Edit'
-    #fill_in 'Username', with: 'usertest'
-    #fill_in 'Password', with: 'password'
-    #fill_in 'Access', with: 1
     fill_in 'Email', with: 'example@example.com'
     fill_in 'Name', with: 'usertest'
     click_button 'Update User'
