@@ -5,11 +5,13 @@
   %thead
     %tr
       %th Image Name
+      %th Conference
 
   %tbody
     - @timetables.each do |timetable|
       %tr
         %td= timetable.timetable_image_file
+        %td= timetable.conference_id
         %td= link_to 'Show', timetable
         %td= link_to 'Edit', edit_timetable_path(timetable)
         %td= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' }

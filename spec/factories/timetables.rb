@@ -6,6 +6,7 @@
 #  timetable_image_file :string
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  conference_id        :integer
 #
 
 FactoryBot.define do

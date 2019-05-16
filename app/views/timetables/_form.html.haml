@@ -6,6 +6,8 @@
   .form-inputs
     = f.input :timetable_image_file, as: :file
     = f.hidden_field :timetable_image_file_cache
+    = f.association :conference, prompt: "Select a Conference"
+
 
   .form-actions
     = f.button :submit, 'Upload Timetable'

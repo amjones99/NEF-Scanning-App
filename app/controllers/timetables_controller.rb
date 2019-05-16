@@ -7,7 +7,7 @@ class TimetablesController < ApplicationController
   #Allows admins to see a list of timetables
   def index
     if current_user.access == 2
-      redirect_to "/users/indexU"
+      redirect_to "/timetables/timetable"
     end
     @timetables = Timetable.all
   end
@@ -15,9 +15,6 @@ class TimetablesController < ApplicationController
   # GET /timetables/1
   #Allows admins to see a specific timetable
   def show
-    if current_user.access == 2
-      redirect_to "/users/indexU"
-    end
   end
 
   # GET /timetables/new
@@ -27,6 +24,7 @@ class TimetablesController < ApplicationController
       redirect_to "/users/indexU"
     end
     @timetable = Timetable.new
+    puts @timetable.to_json
   end
 
   # GET /timetables/1/edit
@@ -41,7 +39,6 @@ class TimetablesController < ApplicationController
   #Allows methods in other files to create new timetables
   def create
     @timetable = Timetable.new(timetable_params)
-
     if @timetable.save
       redirect_to @timetable, notice: 'Timetable was successfully created.'
     else
@@ -81,13 +78,32 @@ class TimetablesController < ApplicationController
     if current_user.access == 1
       redirect_to "/timetables"
     end
-    @timetable = Timetable.last!
-    # puts @timetable.to_json
-    if !@timetable.nil?
-      send_file @timetable.timetable_image_file.url, disposition: 'inline'
-    else
-      redirect_to '/users/indexU', notice: "Timetable does not exist yet"
+    @bookings = Booking.where(user_id: current_user.id)
+    @timetables = Array.new
+    @bookings.each do |b|
+      @timetable = Timetable.where(conference_id: b.conference_id).order(:id).last
+      puts @timetable.as_json
+      # if !@timetable.nil?
+      #   send_file @timetable.timetable_image_file.url, disposition: 'inline'
+      # else
+      #   redirect_to root_url, notice: "Timetable does not exist yet"
+      # end
+      @timetables << @timetable
     end
+    @timetables = @timetables.uniq
+    @names = Hash.new
+    @timetables.each do |t|
+      @name = Conference.where(id: t.conference_id).first
+      @names1 = {t.conference_id => @name.name}
+      @names.merge!(@names1)
+    end
+    # @timetable = Timetable.last!
+    # puts @timetable.timetable_image_file.current_path
+    # # if !@timetable.nil?
+    # #   send_file @timetable.timetable_image_file.url, disposition: 'inline'
+    # if @timetable.nil?
+    #   redirect_to '/users/indexU', notice: "Timetable does not exist yet"
+    # end
   end
 
   private
@@ -98,6 +114,6 @@ class TimetablesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def timetable_params
-      params.require(:timetable).permit(:timetable_image_file, :timetable_image_file_cache)
+      params.require(:timetable).permit(:timetable_image_file, :timetable_image_file_cache, :conference_id)
     end
 end
