@@ -24,5 +24,5 @@ class Booking < ApplicationRecord
 
   validates_presence_of :user, :institution, :ticket_type
   #validates_uniqueness_of :booking_reference
-  validates :booking_reference, length: { is: 9 }
+  #validates :booking_reference, length: { is: 9 }
 end
