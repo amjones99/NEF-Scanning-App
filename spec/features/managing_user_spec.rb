@@ -132,5 +132,4 @@ describe 'Managing user' do
     expect(page).to_not  have_content 'New Booking'
   end
 
-
 end
