@@ -14,6 +14,7 @@ gem 'thin'
 gem 'sqlite3', '1.3.13', group: [:development, :test]
 gem 'pg'
 gem 'carrierwave'
+gem 'carrierwave-imageoptimizer'
 
 gem 'haml-rails'
 gem 'sass-rails'
