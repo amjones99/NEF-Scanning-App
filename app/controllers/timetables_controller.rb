@@ -69,9 +69,7 @@ class TimetablesController < ApplicationController
   # GET /timetables/1
   #Show timetable image
   def show_image
-
     @timetable = Timetable.find(params[:id])
-    puts @timetable.to_json
     if !@timetable.nil?
       send_file @timetable.timetable_image_file.url, disposition: 'inline'
     else
@@ -83,8 +81,8 @@ class TimetablesController < ApplicationController
     if current_user.access == 1
       redirect_to "/timetables"
     end
-    @timetable = Timetable.all
-    puts @timetable.to_json
+    @timetable = Timetable.last!
+    # puts @timetable.to_json
     if !@timetable.nil?
       send_file @timetable.timetable_image_file.url, disposition: 'inline'
     else
