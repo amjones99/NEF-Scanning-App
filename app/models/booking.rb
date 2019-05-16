@@ -16,10 +16,6 @@
 #  conference_id     :integer
 #  user_id           :integer
 #
-# Indexes
-#
-#  bookings_booking_reference  (booking_reference) UNIQUE
-#
 
 class Booking < ApplicationRecord
 
@@ -27,5 +23,5 @@ class Booking < ApplicationRecord
   belongs_to :conference
 
   validates_presence_of :user
-  validates_uniqueness_of :booking_reference
+  # validates_uniqueness_of :booking_reference
 end
