@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   #Allows importing of files in other methods
   def import
     User.import(params[:file])
-    redirect_to root_url, notice: "Successfully Imported File!"
+    redirect_to "/users", notice: "Successfully Imported File!"
   end
 
   # GET /notificationsU
