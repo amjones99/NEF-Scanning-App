@@ -11,5 +11,5 @@
     - @timetables.each do |timetable|
       %tr
         %td= @names[timetable.conference_id]
-        %td= link_to 'Show', timetable
+        %td= link_to 'Show', timetable, :class => 'btn btn-default'
 %br

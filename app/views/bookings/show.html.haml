@@ -10,30 +10,44 @@
 %p
   %b Ticket type:
   = @booking.ticket_type > 1 ? " #{@booking.ticket_type} Days " : " #{@booking.ticket_type} Day "
-%p
-  %b Access req:
-  = @booking.access_req
+
+-if @booking.access_req != ""
+  %p
+    %b Access requirements:
+    = @booking.access_req
 %p
   %b Catering:
-  = @booking.catering
+  -if @booking.catering == true
+    = "Yes"
+  -else
+    = "No"
 %p
   %b Certificate:
-  = @booking.certificate
+  -if @booking.certificate == true
+    = "Yes"
+  -else
+    = "No"
 %p
   %b Attended:
-  = @booking.attended
+  -if @booking.attended == true
+    = "Yes"
+  -else
+    = "No"
 %p
-  %b Dietary req:
-  = @booking.dietary_req
+  %b Dietary requirements:
+  -if @booking.dietary_req == "" || @booking.dietary_req.nil?
+    = "None specified"
+  -else
+    = @booking.dietary_req
 %p
   %b Conference:
-  = @booking.conference_id
+  = @booking.conference.name
 %p
   %b User:
-  = @booking.user_id
+  = @booking.user.username
 
 
 
-= link_to 'Edit', edit_booking_path(@booking)
+= link_to 'Edit', edit_booking_path(@booking), :class => 'btn btn-default'
 \|
-= link_to 'Back', bookings_path
+= link_to 'Back', bookings_path, :class => 'btn btn-default'

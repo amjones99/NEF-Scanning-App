@@ -6,8 +6,6 @@
   = file_field_tag :file
   = submit_tag "Import", class: 'btn btn-secondary'
 %br
-%br
-
 
 = search_form_for(@q) do |f|
   .form-row
@@ -24,7 +22,7 @@
     = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
   .form-actions
     = f.submit "Search", class: 'btn btn-primary'
-    = link_to 'Reset Search', users_path
+    = link_to 'Reset Search', users_path, :class => "btn btn-default"
 
 %br
 .table-responsive
