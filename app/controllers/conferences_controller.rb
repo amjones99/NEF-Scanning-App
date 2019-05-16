@@ -26,7 +26,6 @@ class ConferencesController < ApplicationController
     puts @conference.as_json
     redirect_to conferences_url
   end
-
   # GET /conferences/new
   #Allows admins to create new Conferences
   def new

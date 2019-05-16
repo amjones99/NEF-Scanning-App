@@ -23,5 +23,6 @@ class Booking < ApplicationRecord
   belongs_to :conference
 
   validates_presence_of :user, :ticket_type
+  validates :booking_reference, length: { is: 9 }, on: :create
 
 end
