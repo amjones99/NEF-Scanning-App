@@ -33,8 +33,14 @@ class UsersController < ApplicationController
   # GET /import
   #Allows importing of files in other methods
   def import
-    User.import(params[:file])
-    redirect_to "/users", notice: "Successfully Imported File!"
+    file = params[:file]
+    type = file.content_type.chars.last(3).join
+    if type == "csv"
+      User.import(params[:file])
+      redirect_to "/users", notice: "Successfully Imported File!"
+    else
+      redirect_to "/users", notice: "Selected file was not of correct format (.csv)"
+    end
   end
 
   # GET /notificationsU
