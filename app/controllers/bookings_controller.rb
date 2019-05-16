@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
-    render plain: @booking
   end
 
   def existing
@@ -34,7 +33,7 @@ class BookingsController < ApplicationController
       redirect_to "/users/indexU"
     end
   end
-  
+
   #Toggles the field in the database and sets it to true
   def request_certificate
     @booking = Booking.where(user_id: current_user.id).first
