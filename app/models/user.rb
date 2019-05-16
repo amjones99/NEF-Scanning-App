@@ -43,7 +43,6 @@ class User < ApplicationRecord
   validates :username, :password , :confirmation => true, :length =>{:within => 4..40}, on: :create
 #  validates :username, :password , :confirmation => true, :length =>{:within => 6..40}
   validates_confirmation_of :password
-  validates_uniqueness_of :email
 
 
 
