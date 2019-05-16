@@ -22,6 +22,5 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :conference
 
-
-  validates_presence_of :user, :institution, :ticket_type
+  validates_presence_of :user, :ticket_type
 end
