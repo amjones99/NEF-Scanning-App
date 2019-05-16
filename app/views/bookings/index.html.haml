@@ -42,14 +42,7 @@
         %td= booking.user.username
         %td= booking.booking_reference
         %td= booking.institution
-        %td
-          - case booking.ticket_type
-          - when 1
-            = "Day 1"
-          - when 2
-            = "Day 2"
-          -when 3
-            = "Both days"
+        %td= booking.ticket_type > 1 ? " #{booking.ticket_type} Days " : " #{booking.ticket_type} Day "
         %td= booking.access_req
         %td= bool_to_glyph(booking.catering)
         %td= bool_to_glyph(booking.certificate)
