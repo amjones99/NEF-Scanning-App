@@ -19,7 +19,12 @@ class NotificationsController < ApplicationController
   def show
     if current_user.access == 2
       redirect_to "/users/indexU"
+    else
+      render :showU
     end
+  end
+
+  def showU
   end
 
   # GET /notifications/new
