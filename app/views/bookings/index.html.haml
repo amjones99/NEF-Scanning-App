@@ -15,7 +15,7 @@
   .form-group
     -# filter attended
     = f.label :attended
-    = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
+    = select :q, :attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:attended_true] : '' }
   .form-actions
     = f.submit "Search", class: 'btn btn-primary'
     = link_to 'Reset Search', bookings_url, :class => 'btn btn-default'
