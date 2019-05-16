@@ -26,6 +26,7 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :conference
 
-  validates_presence_of :user
+  validates_presence_of :user, :institution, :ticket_type
   validates_uniqueness_of :booking_reference
+  validates :booking_reference, length: { is: 9 }
 end
