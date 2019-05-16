@@ -17,5 +17,5 @@ class Conference < ApplicationRecord
   has_many :booking
 
   validates :days, :name, :location, presence: true
-
+  validates :days, numericality: { greater_than: 0}
 end
