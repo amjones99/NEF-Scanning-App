@@ -7,6 +7,7 @@ source "https://gems.shefcompsci.org.uk" do
   gem 'capybara-select2', group: :test
 end
 
+gem 'validates_timeliness', '~> 4.0.2'
 gem 'rails', '5.2.1'
 gem 'bootsnap'
 gem 'responders'

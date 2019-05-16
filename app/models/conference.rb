@@ -17,5 +17,6 @@ class Conference < ApplicationRecord
   has_many :booking
 
   validates :days, :name, :location, presence: true
-
+  validates :days, numericality: { greater_than: 0}
+  validates_date :end_date, :on_or_after => :start_date, :on_or_after_message => 'The conference cannot end before the start date'
 end
