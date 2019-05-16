@@ -3,20 +3,12 @@
 - @bookingUserID.each do |b|
   .card
     %p.days
-      - case b.ticket_type
-      - when 1
-        = "Day 1"
-      - when 2
-        = "Day 2"
-      -when 3
-        = "Both days"
+      = b.ticket_type > 1 ? " #{b.ticket_type} Days " : " #{b.ticket_type} Day "
     %h1{style: 'margin: 0 auto'}
       = current_user.name
     %h3{style: 'margin: 10px auto 20px'}
       = current_user.institution
 
-    %img{src: '/badge-temp.png', class: "card-img"}
+    %img{src: '/badge-temp.png', class: "card-img-responsive", id: "badge"}
 
 %br
-
-<a onclick='window.print(); return false;' class='btn btn-primary'>Print</a>
