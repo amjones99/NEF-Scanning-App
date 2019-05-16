@@ -19,12 +19,15 @@ class NotificationsController < ApplicationController
   def show
     if current_user.access == 2
       redirect_to "/users/indexU"
-    else
-      render :showU
     end
   end
 
   def showU
+    if current_user.access == 1
+      redirect_to notifications_url
+    end
+    @notification = Notification.where(id: params[:id]).first
+    puts @notification.as_json
   end
 
   # GET /notifications/new

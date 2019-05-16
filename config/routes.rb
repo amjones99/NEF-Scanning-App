@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :notifications do
-    get :showU, on: :collection
+    get :showU, on: :member
   end
   resources :events
   resources :conferences do

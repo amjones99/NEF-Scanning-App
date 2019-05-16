@@ -19,7 +19,6 @@
   %thead
     %tr
       %th=sort_link(@q, :not_id, 'Title', default_order: :desc)
-      %th=sort_link(@q, :not_des, 'Description')
       %th=sort_link(@q, :time, 'Time')
       %th
       %th
@@ -29,7 +28,6 @@
     - @notifications.each do |notification|
       %tr
         %td= notification.not_id
-        %td= notification.not_des
         %td= notification.time
         %td.dropdown
           %btn.btn.btn-secondary.dropdown-toggle
