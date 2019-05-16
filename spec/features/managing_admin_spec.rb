@@ -15,7 +15,7 @@ describe 'Managing  admin features ' do
     FactoryBot.create :user,id: 2, username:'test2' ,name: 'testuser2', email: 'test@test.t'
     FactoryBot.create :conference
     FactoryBot.create :booking
-    FactoryBot.create :booking, id: 2, booking_reference: '17261524'
+    FactoryBot.create :booking, id: 2, booking_reference: '172615241'
     visit '/'
     fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
@@ -29,7 +29,7 @@ describe 'Managing  admin features ' do
     FactoryBot.create :user,id: 2, username:'test2' ,name: 'testuser2', email: 'test@test.t'
     FactoryBot.create :conference
     FactoryBot.create :booking
-    FactoryBot.create :booking, id: 2, booking_reference: '17261524'
+    FactoryBot.create :booking, id: 2, booking_reference: '172615241'
     visit '/'
     fill_in 'Username', with:'testinguser'
     fill_in 'Password', with:'password'
@@ -153,4 +153,37 @@ describe 'Managing  admin features ' do
     click_link 'New Timetable'
     expect(page).to have_content 'New Session'
   end
+  # specify 'I can delete a timetable' do
+  #   FactoryBot.create :user
+  #   FactoryBot.create :timetable
+  #   visit '/users'
+  #   fill_in 'Username', with:'testinguser'
+  #   fill_in 'Password', with:'password'
+  #   click_button 'Log in'
+  #   click_link 'Timetables'
+  #   expect(page).to have_content 'Listing Timetable'
+  #   click_link 'Destroy'
+  #   expect(page).to have_content ' Timetable was successfully destroyed.'
+  # end
+  specify 'I can not access the user page' do
+    FactoryBot.create :user
+    visit '/users/'
+    fill_in 'Username', with:'testinguser'
+    fill_in 'Password', with:'password'
+    click_button 'Log in'
+    visit '/users/indexU'
+    expect(page).to_not have_content 'Homepage'
+  end
+  specify 'I can sort bookings' do
+    FactoryBot.create :user
+    FactoryBot.create :user, id: 2, username:'test1' ,name: 'testuser1', email: 'test@test.t1', access: 2
+    FactoryBot.create :user,id: 3, username:'test2' ,name: 'testuser2', email: 'test@test.t2', access: 2
+    FactoryBot.create :user,id: 4, username:'test3' ,name: 'testuser3', email: 'test@test.t2', access: 2
+    visit '/'
+    fill_in 'Username', with:'testinguser'
+    fill_in 'Password', with:'password'
+    click_button 'Log in'
+    click_link "User"
+    expect('/bookings?q%5Bs%5D=user_id+asc')
+    end
 end

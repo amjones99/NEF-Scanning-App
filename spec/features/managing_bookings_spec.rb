@@ -45,6 +45,6 @@ describe 'Managing  bookings as an admin ' do
     click_link 'Destroy'
     within(:css, 'table') {expect(page).to_not have_content '123456789'}
   end
-
+  
 
 end
