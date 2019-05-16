@@ -5,7 +5,9 @@
 
   .form-inputs
     = f.input :institution, placeholder: "Enter Institution"
-    = f.input :ticket_type, label: "Number of Days", placeholder: "Enter the Number of Days this ticket is valid for"
+    = f.label "Number of Days"
+    = f.select :ticket_type,[['Day 1',1],['Day 2', 2],['All Days', 3]]
+  %br
     = f.input :access_req, label: "Access Requirements (e.g. Wheelchair)", placeholder: "Leave blank if unrequired"
     = f.input :catering
     = f.input :certificate

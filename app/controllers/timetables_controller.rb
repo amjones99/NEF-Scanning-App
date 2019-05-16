@@ -70,8 +70,9 @@ class TimetablesController < ApplicationController
   #Show timetable image
   def show_image
 
-    @timetable = Timetable.last
-    if @timetable.exists?
+    @timetable = Timetable.find(params[:id])
+    puts @timetable.to_json
+    if !@timetable.nil?
       send_file @timetable.timetable_image_file.url, disposition: 'inline'
     else
       redirect_to root_url, notice: "Timetable does not exist yet"
@@ -83,7 +84,8 @@ class TimetablesController < ApplicationController
       redirect_to "/timetables"
     end
     @timetable = Timetable.all
-    if @timetable.exists?
+    puts @timetable.to_json
+    if !@timetable.nil?
       send_file @timetable.timetable_image_file.url, disposition: 'inline'
     else
       redirect_to '/users/indexU', notice: "Timetable does not exist yet"

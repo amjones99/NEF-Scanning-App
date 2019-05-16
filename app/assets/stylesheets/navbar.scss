@@ -1,0 +1,37 @@
+.navbar-brand {
+  line-height: 0;
+  height: auto;
+  margin-right: 15px;
+  // padding: 0;
+}
+
+.navbar-brand > img {
+  display: initial;
+}
+
+.navbar-default {
+  background-color: white;
+  border: 0;
+
+  .navbar-brand {
+    color: #446baa;
+  }
+
+  .navbar-nav {
+    margin: 7.5px -15px;
+    // li {
+    //   a {
+    //     color: #446baa;
+    //
+    //     &:hover {
+    //       color: #233551;
+    //       transition: 0.5s;
+    //     }
+    //   }
+    // }
+  }
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}

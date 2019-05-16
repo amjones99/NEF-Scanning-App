@@ -9,7 +9,13 @@
   = @booking.institution
 %p
   %b Ticket type:
-  = @booking.ticket_type
+  = case @booking.ticket_type
+  - when 1
+    = "Day 1"
+  - when 2
+    = "Day 2"
+  -when 3
+    = "Both days"
 %p
   %b Access req:
   = @booking.access_req

@@ -1,4 +1,7 @@
-%h1 Listing bookings
+
+
+%h5 Listing bookings
+
 = link_to 'New Booking', new_booking_path, class: 'btn btn-primary btn-new-user'
 %br
 = search_form_for(@q) do |f|
@@ -39,7 +42,14 @@
         %td= booking.user.username
         %td= booking.booking_reference
         %td= booking.institution
-        %td= booking.ticket_type
+        %td
+          - case booking.ticket_type
+          - when 1
+            = "Day 1"
+          - when 2
+            = "Day 2"
+          -when 3
+            = "Both days"
         %td= booking.access_req
         %td= bool_to_glyph(booking.catering)
         %td= bool_to_glyph(booking.certificate)

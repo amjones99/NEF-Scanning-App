@@ -31,10 +31,10 @@
 %table.table.table-striped#userstable
   %thead
     %tr
-      %th Username
-      %th Access
-      %th Institution
-      %th Email
+      %th=sort_link(@q, :username, 'Username')
+      %th=sort_link(@q, :access, 'Access')
+      %th=sort_link(@q, :institution, 'Institution')
+      %th=sort_link(@q, :email, 'Email')
       %th=sort_link(@q, :name, 'Name', default_order: :desc)
       %th Attended
       %th
@@ -42,7 +42,10 @@
     - @users_with_attended.each do |user|
       %tr
         %td= user.username
-        %td= user.access
+        -if user.access == 1
+          %td= "Admin"
+        -else
+          %td= "Delegate"
         %td= user.institution
         %td= user.email
         %td= user.name
