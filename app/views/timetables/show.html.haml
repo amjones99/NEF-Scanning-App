@@ -1,4 +1,5 @@
 %p#notice= notice
 = image_tag show_image_timetable_path(@timetable), id: 'timetable', class: 'img-responsive', style: 'width:100%; height:auto;'
--# %img{src: show_image_timetable_path(@timetable), class: "img-responsive"}
-= link_to 'Back', timetables_path
+
+%br
+= link_to 'Back', timetables_path, :class => 'btn btn-default'

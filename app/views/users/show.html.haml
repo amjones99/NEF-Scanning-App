@@ -1,25 +1,25 @@
 %p#notice= notice
 
 %p
+  %b Name:
+  = @user.name
+%p
   %b Username:
   = @user.username
 %p
-  %b Password:
-  = @user.password
-%p
   %b Access:
-  = @user.access
+  -if @user.access == 1
+    = "Admin"
+  -else
+    = "Delegate"
 %p
   %b Institution:
   = @user.institution
 %p
   %b Email:
   = @user.email
-%p
-  %b Name:
-  = @user.name
 
 
-= link_to 'Edit', edit_user_path(@user)
+= link_to 'Edit', edit_user_path(@user), :class => "btn btn-default"
 \|
-= link_to 'Back', users_path
+= link_to 'Back', users_path, :class => "btn btn-default"
