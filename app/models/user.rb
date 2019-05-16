@@ -42,8 +42,6 @@ class User < ApplicationRecord
   validates :username, :password, :access, :email, :name, presence: true, on: :create
   validates :username, :password , :confirmation => true, :length =>{:within => 4..40}, on: :create
 #  validates :username, :password , :confirmation => true, :length =>{:within => 6..40}
-  validates :access, numericality: { less_than: 3}
-  validates :access, numericality: { greater_than: 0}
   validates_confirmation_of :password
 
 
