@@ -32,6 +32,9 @@ class BookingsController < ApplicationController
     if current_user.access == 2
       redirect_to "/users/indexU"
     end
+    @count = Conference.where(id: @booking.conference_id).uniq.pluck(:days).first
+    # (1..@count).each do
+    puts @count
   end
 
   #Toggles the field in the database and sets it to true

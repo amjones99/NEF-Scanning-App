@@ -9,13 +9,10 @@
   = @booking.institution
 %p
   %b Ticket type:
-  = case @booking.ticket_type
-  - when 1
-    = "Day 1"
-  - when 2
-    = "Day 2"
-  -when 3
-    = "Both days"
+  - if @booking.ticket_type < Conference.where(id: @booking.conference_id).uniq.pluck(:days).first
+    = "Day #{@booking.ticket_type}"
+  - else
+    = "Every day"
 %p
   %b Access req:
   = @booking.access_req
