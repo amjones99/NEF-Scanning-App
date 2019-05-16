@@ -4,10 +4,9 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
+    = f.input :booking_reference, placeholder: "E.g. 123456789"
     = f.input :institution, placeholder: "Enter Institution"
-    = f.label "Number of Days"
-    = f.select :ticket_type,[['Day 1',1],['Day 2', 2],['All Days', 3]]
-  %br
+    = f.input :ticket_type, label: "Number of Days", placeholder: "Enter the Number of Days this ticket is valid for"
     = f.input :access_req, label: "Access Requirements (e.g. Wheelchair)", placeholder: "Leave blank if unrequired"
     = f.input :catering
     = f.input :certificate

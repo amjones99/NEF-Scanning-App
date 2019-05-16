@@ -16,16 +16,19 @@
 #  conference_id     :integer
 #  user_id           :integer
 #
-# Indexes
-#
-#  bookings_booking_reference  (booking_reference) UNIQUE
-#
 
 class Booking < ApplicationRecord
 
   belongs_to :user
   belongs_to :conference
 
-  validates_presence_of :user
+<<<<<<< HEAD
+  validates_presence_of :user, :ticket_type
   validates_uniqueness_of :booking_reference
+  validates :booking_reference, length: { is: 9 }
+=======
+  validates_presence_of :user, :institution, :ticket_type
+  #validates_uniqueness_of :booking_reference
+  #validates :booking_reference, length: { is: 9 }
+>>>>>>> ba34174abb9081c1f98bc0873ad7511384c90813
 end
