@@ -88,7 +88,9 @@ class TimetablesController < ApplicationController
       # else
       #   redirect_to root_url, notice: "Timetable does not exist yet"
       # end
-      @timetables << @timetable
+      if !@timetable.nil?
+        @timetables << @timetable
+      end
     end
     @timetables = @timetables.uniq
     @names = Hash.new
