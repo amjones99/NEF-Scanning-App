@@ -40,13 +40,20 @@ describe 'Managing user' do
     click_button 'Log in'
     have_css("img[src*='/map.jpg']")
   end
-#   specify 'I can see a timetable ' do
-#     FactoryBot.create :user, access: 2
-#     visit '/users'
-#     fill_in 'Username', with:'testinguser'
-#     fill_in 'Password', with:'password'
-#     click_button 'Log in'
-# end
+  # specify 'I can see a list of  timetables ' do
+  #   FactoryBot.create :user, access: 2
+  #   FactoryBot.create :conference
+  #   FactoryBot.create :timetable
+  #   visit '/users'
+  #   fill_in 'Username', with:'testinguser'
+  #   fill_in 'Password', with:'password'
+  #   click_button 'Log in'
+  #   click_link 'Timetable'
+  #   click_button 'Show'
+  #   expect(page).to have_content 'Back'
+  #
+  # end
+
   specify 'I can see a badge ' do
     FactoryBot.create :user, access: 2
     visit '/users'
@@ -65,7 +72,7 @@ describe 'Managing user' do
     fill_in 'Password', with:'password'
     click_button 'Log in'
     click_link 'Account'
-    click_link 'Request Certificate of attendance'
+    click_link 'Request'
     expect(page).to have_content 'Successfully requested certificate!'
   end
   # specify 'I can change my password' do
