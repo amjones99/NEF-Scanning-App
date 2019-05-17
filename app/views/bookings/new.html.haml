@@ -1,7 +1,9 @@
 %h1 New booking
 
-= link_to 'Create New User', new_user_path
+= link_to 'Create New User', new_user_path, :class => 'btn btn-primary'
 %br
-= link_to 'Create Booking for user', existing_bookings_path
 %br
-= link_to 'Back', bookings_path
+= link_to 'Create Booking for user', existing_bookings_path, :class => 'btn btn-primary'
+%br
+%br
+= link_to 'Back', bookings_path, :class => 'btn btn-default'

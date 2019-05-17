@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :notifications
+  resources :notifications do
+    get :showU, on: :member
+  end
   resources :events
   resources :conferences do
     get :map, on: :collection
-    get :export, on: :member
   end
   resources :timetables do
     get :show_image, on: :member

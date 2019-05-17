@@ -15,10 +15,10 @@
   .form-group
     -# filter attended
     = f.label :attended
-    = select :q, :booking_attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:booking_attended_true] : '' }
+    = select :q, :attended_true, [['Yes', 1], ['No', 0]], { include_blank: 'All', selected: params[:q] ? params[:q][:attended_true] : '' }
   .form-actions
     = f.submit "Search", class: 'btn btn-primary'
-    = link_to 'Reset Search', bookings_url
+    = link_to 'Reset Search', bookings_url, :class => 'btn btn-default'
 
 .table-responsive
 %table.table.table-striped
@@ -38,23 +38,24 @@
 
   %tbody
     - @bookings.each do |booking|
-      %tr
-        %td= booking.user.username
-        %td= booking.booking_reference
-        %td= booking.institution
-        %td= booking.ticket_type > 1 ? " #{booking.ticket_type} Days " : " #{booking.ticket_type} Day "
-        %td= booking.access_req
-        %td= bool_to_glyph(booking.catering)
-        %td= bool_to_glyph(booking.certificate)
-        %td= bool_to_glyph(booking.attended)
-        %td= booking.dietary_req
-        %td= booking.conference_id
-        %td.dropdown
-          %btn.btn.btn-secondary.dropdown-toggle
-            Options
-          .dropdown-content
-            = link_to 'Show', booking, class: 'dropdown-item'
-            = link_to 'Edit', edit_booking_path(booking), class: 'dropdown-item'
-            = link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
-            -# = link_to 'Toggle Attended', toggle_attended_booking_path(booking), method: :patch, remote: :true,  class: 'dropdown-item'
-            = link_to 'Toggle Attended', booking_path(booking, booking: {attended: !booking.attended}), method: :put, class: 'dropdown-item'
+      -if !booking.user.nil?
+        %tr
+          %td= booking.user.username
+          %td= booking.booking_reference
+          %td= booking.institution
+          %td= booking.ticket_type > 1 ? " #{booking.ticket_type} Days " : " #{booking.ticket_type} Day "
+          %td= booking.access_req
+          %td= bool_to_glyph(booking.catering)
+          %td= bool_to_glyph(booking.certificate)
+          %td= bool_to_glyph(booking.attended)
+          %td= booking.dietary_req
+          %td= booking.conference_id
+          %td.dropdown
+            %btn.btn.btn-secondary.dropdown-toggle
+              Options
+            .dropdown-content
+              = link_to 'Show', booking, class: 'dropdown-item'
+              = link_to 'Edit', edit_booking_path(booking), class: 'dropdown-item'
+              = link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item'
+              -# = link_to 'Toggle Attended', toggle_attended_booking_path(booking), method: :patch, remote: :true,  class: 'dropdown-item'
+              = link_to 'Toggle Attended', booking_path(booking, booking: {attended: !booking.attended}), method: :put, class: 'dropdown-item'

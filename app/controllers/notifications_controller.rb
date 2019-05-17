@@ -22,6 +22,14 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def showU
+    if current_user.access == 1
+      redirect_to notifications_url
+    end
+    @notification = Notification.where(id: params[:id]).first
+    puts @notification.as_json
+  end
+
   # GET /notifications/new
   #Allows admins to create a new notifications
   def new

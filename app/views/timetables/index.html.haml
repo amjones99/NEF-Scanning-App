@@ -5,15 +5,21 @@
   %thead
     %tr
       %th Image Name
+      %th Conference
 
   %tbody
     - @timetables.each do |timetable|
       %tr
         %td= timetable.timetable_image_file
-        %td= link_to 'Show', timetable
-        %td= link_to 'Edit', edit_timetable_path(timetable)
-        %td= link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= timetable.conference_id
+        %td.dropdown
+          %btn.btn.btn-secondary.dropdown-toggle
+            Options
+          .dropdown-content
+            = link_to 'Show', timetable
+            = link_to 'Edit', edit_timetable_path(timetable)
+            = link_to 'Destroy', timetable, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Timetable', new_timetable_path
+= link_to 'New Timetable', new_timetable_path, :class => 'btn btn-primary'

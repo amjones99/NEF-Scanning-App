@@ -1,1 +1,15 @@
-= image_tag timetable_timetable_path(@timetable), id: 'timetable', class: 'img-responsive'
+-# %img{src: show_image_timetable_path(@timetable), class: "img-responsive"}
+%h1 My Timetables
+
+.table-responsive
+%table.table.table-striped
+  %thead
+    %tr
+      %th Conference
+
+  %tbody
+    - @timetables.each do |timetable|
+      %tr
+        %td= @names[timetable.conference_id]
+        %td= link_to 'Show', timetable, :class => 'btn btn-default'
+%br

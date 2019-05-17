@@ -14,11 +14,11 @@
   -# filter name
   .form-row
     .col.form-group
-      = f.search_field :name, class: 'form-control', placeholder: 'Conference name contains:'
+      = f.search_field :name_cont, class: 'form-control', placeholder: 'Conference name contains:'
     .col.form-group
       .form-actions
         = f.submit "Search", class: 'btn btn-primary'
-        = link_to 'Reset Search', conferences_url
+        = link_to 'Reset Search', conferences_url, :class => 'btn btn-default'
 
 .table-responsive
 %table.table.table-striped

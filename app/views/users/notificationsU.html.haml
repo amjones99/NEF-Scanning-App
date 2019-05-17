@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Notification Name
-      %th Notification Description
       %th Time
       %th
       %th
@@ -14,7 +13,7 @@
     - @notifications.each do |notification|
       %tr
         %td= notification.not_id
-        %td= notification.not_des
         %td= notification.time
+        %td= link_to 'Show', showU_notification_path(notification), :class => 'btn btn-default'
 
 %br
